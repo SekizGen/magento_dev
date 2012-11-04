@@ -1,2 +1,3 @@
 magento_dev
 ===========
+MAGENTO Tema Geliştirme Eğitim PaketiBu dokümanda SEKİZGEN için bir tema geliştirmek ve bu temayı geliştirirken MAGENTO yapısını öğrenmek için gereken adımlara ve dokümanlara ulaşabilirsiniz. Gerekli eğitim tamamlandıktan sonra SEKİZGEN adına bir tema yapmak için gereken bilgileri de yine bu dokümanın sonunda bulabileceksiniz. İşe başlamadan önce bol miktarda okuma yapmanız gerekmektedir. İşe yarar dokümanların bağlantıları ve açıklamalarına aşağıda bulabilirsiniz.Magento Resmi İnternet Sitesi:http://www.magentocommerce.comMagento kaynak kodlarını indirmek için gereken bağlantı. SekizGen geliştirmelerini şu anda 1.7.0.2 versiyonunu üzerine yapmaktadır.http://www.magentocommerce.com/download
