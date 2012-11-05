@@ -109,4 +109,4 @@ media/dhl/logo.jpg
 .DS_Store
 .htaccess
 .svn
-app/local.xml
+app/etc/local.xml
