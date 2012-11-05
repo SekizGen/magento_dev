@@ -16,13 +16,16 @@ http://www.magentocommerce.com/wiki/1_-_installation_and_configuration/magento_i
 Eğer lokal geliştirme ortamınız MacOSX ise dikkat edilmesi gereken adımlar:
 http://www.magentocommerce.com/wiki/1_-_installation_and_configuration/installing-magento-on-mac-os-x-server-10-4-9
 
-Magento Kullanım Kitabı: Bu dokümanda özellikle “Product Types” ve açıklamaları dikkatlice incelenmelidir. Ayrıca Magento’nun standart özellikleri ve onların kullanımlarını öğrenmek için her zaman bu kitaba başvurabilirsiniz. Bir çeşit başucu el kitabıdır.
+SEKİZGEN firmasına özel örnek veri tabanının geliştirme ortamınıza kurulumu ile ilgili detaylı bilgiler
+https://github.com/SekizGen/magento_dev/wiki/Örnek-Veritabanı-Kurulumu
+
+MAGENTO Kullanım Kitabı: Bu dokümanda özellikle “Product Types” ve açıklamaları dikkatlice incelenmelidir. Ayrıca MAGENTO standart özellikleri ve onların kullanımlarını öğrenmek için her zaman bu kitaba başvurabilirsiniz. Bir çeşit başucu el kitabıdır.
 http://www.magentocommerce.com/resources/magento-user-guide
 
-Magento Tasarımcı Rehberi: Bu doküman dahilindeki ödevi yerine getirmek için en önemli doküman bu dokümandır. Son derece dikkatlice okunmalıdır. 
+MAGENTO Tasarımcı Rehberi: Bu doküman dahilindeki ödevi yerine getirmek için en önemli doküman bu dokümandır. Son derece dikkatlice okunmalıdır. 
 http://www.magentocommerce.com/design_guide
 
-Magento platformu üzerinde modül geliştirme ve her türlü bilgi aşağıdadır. 8 bölümden oluşmaktadır. Her bölümdeki egzersizleri yaparak öğrenmenizi hızlandırabilirsiniz. Buradaki egzersizleri bize göndermenize gerek yoktur. Sizin öğrenmeniz içindir.
+MAGENTO platformu üzerinde modül geliştirme ve her türlü bilgi aşağıdadır. 8 bölümden oluşmaktadır. Her bölümdeki egzersizleri yaparak öğrenmenizi hızlandırabilirsiniz. Buradaki egzersizleri bize göndermenize gerek yoktur. Sizin öğrenmeniz içindir.
 •  http://www.magentocommerce.com/knowledge-base/entry/magento-for-dev-part-1-introduction-to-magento
 •	http://www.magentocommerce.com/knowledge-base/entry/magento-for-dev-part-2-the-magento-config
 •	http://www.magentocommerce.com/knowledge-base/entry/magento-for-dev-part-3-magento-controller-dispatch
