@@ -1,0 +1,8 @@
+<config>
+    <modules>
+        <Sekizgen_Lastikgenerallayout>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Sekizgen_Lastikgenerallayout>
+    </modules>
+</config>

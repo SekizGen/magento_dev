@@ -1,0 +1,215 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * @category    Sample
+ * @package     Sample_WidgetTwo
+ * @copyright   Copyright (c) 2009 Irubin Consulting Inc. DBA Varien (http://www.varien.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+/**
+ * @var $this Sample_WidgetTwo_Block_List
+ * @see Sample_WidgetTwo_Block_List
+ */
+?>
+
+
+
+<?php
+foreach ($list as $item)
+{
+?>
+<script>
+var $j = jQuery.noConflict();
+  
+function writeCookie(name,value,days) 
+{
+  var date, expires;
+  if (days) 
+  {
+    date = new Date();
+    date.setTime(date.getTime()+(days*24*60*60*1000));
+    expires = "; expires=" + date.toGMTString();
+  }
+  else
+  {
+    expires = "";
+  }
+  document.cookie = name + "=" + value + expires + "; path=/";
+}
+</script>
+<div id="aramaDiv" style="width: 460px;float: left;margin-top: 170px;margin-left: 71px;">
+  <div class="rowElem">
+    <label><?php echo Mage::Helper('search')->__('Width'); /*echo $this->__('Width')*/ ?>:</label>
+    <div id="widthDiv" style="width: 132px;height: 33px;float: left;">
+      <select name="widthSelect" id="widthSelect" style="width:100px;" onchange="loadRatio();">
+        <?php
+        echo '<option value="0">'.Mage::Helper('search')->__('Select Width').'</option>';
+        for($i=0;$i<count($item['width']);$i++)
+        {
+          echo '<option value="'.$item['width'][$i]['value'].'">'.$item['width'][$i]['label'].'</option>';
+        }
+        ?>
+      </select>
+    </div>
+  </div>
+  <div class="rowElem">
+    <label><?php echo Mage::Helper('search')->__('Ratio'); ?>:</label>
+    <div id="ratioDiv" style="width: 132px;height: 33px;float: left;">
+      <select name="ratioSelect" id="ratioSelect" style="width:100px;" onchange="loadRadius();">
+        <?php
+        echo '<option value="0">'.Mage::Helper('search')->__('Select Ratio').'</option>';
+        for($i=0;$i<count($item['ratio']);$i++)
+        {
+          echo '<option value="'.$item['ratio'][$i]['value'].'">'.$item['ratio'][$i]['label'].'</option>';
+        }
+        ?>
+      </select>
+    </div>
+  </div>
+  <div class="rowElem">
+    <label><?php echo Mage::Helper('search')->__('Radius'); ?>:</label>
+    <div id="radiusDiv" style="width: 132px;height: 33px;float: left;">
+      <select name="radiusSelect" id="radiusSelect" style="width:100px;" onchange="loadSpeed();">
+        <?php
+        echo '<option value="0">'.Mage::Helper('search')->__('Select Radius').'</option>';
+        for($i=0;$i<count($item['radius']);$i++)
+        {
+          echo '<option value="'.$item['radius'][$i]['value'].'">'.$item['radius'][$i]['label'].'</option>';
+        }
+        ?>
+      </select>
+    </div>
+  </div>
+  <div class="rowElem">
+    <label><?php echo Mage::Helper('search')->__('Speed'); ?>:</label>
+    <div id="speedDiv" style="width: 132px;height: 33px;float: left;">
+      <select name="speedSelect" id="speedSelect" style="width:100px;">
+        <?php
+        echo '<option value="0">'.Mage::Helper('search')->__('Select Speed').'</option>';
+        for($i=0;$i<count($item['speed']);$i++)
+        {
+          echo '<option value="'.$item['speed'][$i]['value'].'">'.$item['speed'][$i]['label'].'</option>';
+        }
+        ?>
+      </select>
+    </div>
+  </div>
+  
+  
+  <div class="rowElem" style="margin-left:295px; margin-top:-125px; position: absolute; width:150px;">
+    <input type="radio" id="question1" name="question" value="fullyfitted" checked ><label><?php echo Mage::Helper('search')->__('Fully Fitted'); ?></label>
+    <div style="clear:both; height:10px; width:0px;"></div>
+    <input type="radio" id="question2" name="question" value="delivered" ><label><?php echo Mage::Helper('search')->__('Delivered'); ?></label>
+  </div>
+
+  <div style="width: 165px;height: 47px;position: absolute;margin-top: -267px;margin-left: 287px;cursor: pointer;" onclick="writeCookie('TakmaHizmeti',$j('input[name=\'question\']:checked').val(),1); window.location='<?php echo $item['url']; ?>?radius='+$j('#radiusSelect').val()+'&ratio='+$j('#ratioSelect').val()+'&width='+$j('#widthSelect').val()+'&speed_index='+$j('#speedSelect').val();"></div>
+  <div style="clear:both; height:10px; width:0px;"></div>
+</div>
+
+
+
+<style>
+  #aramaDiv .jqTransformSelectWrapper div span
+  {
+    font-size:11px;
+  }
+
+</style>
+<script>
+
+
+  $j(document).ready(function(){
+    $j('#aramaDiv').jqTransform();
+  });
+  
+
+  var url = '<?php echo $this->getUrl('search/ajax/index'); ?>';
+  function loadRatio()
+  {
+    var width = $j('#widthSelect').val();
+    
+    $j('#ratioDiv').html('<img src="<?php echo $this->getSkinUrl(); ?>/images/select-loader.gif" border="0" style="margin-top:7px;" />');
+    $j.post(url,{ width:width }, function(data) { 
+      if(data!=null)
+      {
+        var icerik = '';
+        icerik += '<select name="ratioSelect" id="ratioSelect" style="width:100px;" onchange="loadRadius(this.value);">';
+        icerik += '<option value="0"><?php echo Mage::Helper('search')->__('Select Ratio'); ?></option>';
+        for(var i=0;i<data.length;i++)
+        {
+          icerik += '<option value="' + data[i].value + '">' + data[i].label + '</option>';
+        }
+        icerik += '</select>';
+        
+        $j('#ratioDiv').html(icerik);
+        $j('#aramaDiv').removeClass('jqtransformdone');
+        $j('#aramaDiv').jqTransform();
+      }
+    },'json');
+  }
+
+  function loadRadius()
+  {
+    var width = $j('#widthSelect').val();
+    var ratio = $j('#ratioSelect').val();
+    $j('#radiusDiv').html('<img src="<?php echo $this->getSkinUrl(); ?>/images/select-loader.gif" border="0" style="margin-top:7px;" />');
+    $j.post(url,{ width:width,ratio:ratio }, function(data) { 
+      if(data!=null)
+      {
+        var icerik = '';
+        icerik += '<select name="radiusSelect" id="radiusSelect" style="width:100px;" onchange="loadSpeed(this.value);">';
+        icerik += '<option value="0"><?php echo Mage::Helper('search')->__('Select Radius'); ?></option>';
+        for(var i=0;i<data.length;i++)
+        {
+          icerik += '<option value="' + data[i].value + '">' + data[i].label + '</option>';
+        }
+        icerik += '</select>';
+        
+        $j('#radiusDiv').html(icerik);
+        $j('#aramaDiv').removeClass('jqtransformdone');
+        $j('#aramaDiv').jqTransform();
+      }
+    },'json');
+  }
+
+
+  function loadSpeed()
+  {
+    var width = $j('#widthSelect').val();
+    var ratio = $j('#ratioSelect').val();
+    var radius = $j('#radiusSelect').val();
+    $j('#speedDiv').html('<img src="<?php echo $this->getSkinUrl(); ?>/images/select-loader.gif" border="0" style="margin-top:7px;" />');
+    $j.post(url,{ width:width,ratio:ratio,radius:radius }, function(data) { 
+      if(data!=null)
+      {
+        var icerik = '';
+        icerik += '<select name="speedSelect" id="speedSelect" style="width:100px;">';
+        icerik += '<option value="0"><?php echo Mage::Helper('search')->__('Select Speed'); ?></option>';
+        for(var i=0;i<data.length;i++)
+        {
+          icerik += '<option value="' + data[i].value + '">' + data[i].label + '</option>';
+        }
+        icerik += '</select>';
+        
+        $j('#speedDiv').html(icerik);
+        $j('#aramaDiv').removeClass('jqtransformdone');
+        $j('#aramaDiv').jqTransform();
+      }
+    },'json');
+  }
+</script>
+
+
+<?php } ?>

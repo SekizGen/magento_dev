@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * @category    Sample
+ * @package     Sample_WidgetTwo
+ * @copyright   Copyright (c) 2009 Irubin Consulting Inc. DBA Varien (http://www.varien.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+-->
+<widgets>
+    <carousel_list type="carousel/list" translate="name description" module="carousel">
+        <name>Carousel</name>
+        <description>Aşağıdaki listeden carousel seçiniz</description>
+        <parameters>
+            <enabled_services>
+                <label>Carousel</label>
+                <visible>1</visible>
+                <required>1</required>
+                <type>multiselect</type>
+                <source_model>carousel/services</source_model>
+            </enabled_services>
+            <products_count translate="label">
+                <required>1</required>
+                <visible>1</visible>
+                <value>12</value>
+                <label>Ürün Adedi</label>
+                <type>text</type>
+            </products_count>
+            <featured_category translate="label">
+                <required>0</required>
+                <visible>1</visible>
+                <value>4</value>
+                <label>Seçtiklerimiz bölümü için kategori id</label>
+                <type>text</type>
+            </featured_category>
+            <timer translate="label">
+                <required>1</required>
+                <visible>1</visible>
+                <value>6000</value>
+                <label>bekleme süresi (milisaniye)</label>
+                <type>text</type>
+            </timer>
+            <template translate="label">
+                <label>Tip</label>
+                <visible>1</visible>
+                <required>1</required>
+                <type>select</type>
+                <values>
+                    <carousel1 translate="label">
+                        <value>carousel/carousel.phtml</value>
+                        <label>Carousel</label>
+                    </carousel1>
+                </values>
+            </template>
+        </parameters>
+    </carousel_list>
+</widgets>

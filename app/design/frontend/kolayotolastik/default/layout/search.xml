@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<layout version="1.0">
+  <search_ajax_index>
+    <block type="search/search" name="root" output="toHtml" template="search/search.phtml" />
+  </search_ajax_index>
+</layout>

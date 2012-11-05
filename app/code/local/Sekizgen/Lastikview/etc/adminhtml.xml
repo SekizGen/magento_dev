@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<config>
+        <menu>
+            <sales>
+                <children>
+                    <countyselection module="sekizgen_lastikview">
+                        <title>Sekizgen İİlçe Seçimleri</title>
+                        <sort_order>5000</sort_order>
+                        <action>sekizgen_lastikview/adminhtml_countyselection</action>
+                    </countyselection>
+                </children>
+            </sales>
+        </menu>
+        <acl>
+            <resources>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
+                <admin>
+                    <children>
+                    	<sales>
+                    		<children>
+		                        <sekizgen_lastikview>
+		                            <title>Sekizgen Lastikview Module</title>
+		                            <sort_order>21</sort_order>
+		                        </sekizgen_lastikview>
+                    		</children>
+                    	</sales>
+                    </children>
+                </admin>
+            </resources>   
+        </acl>
+
+
+</config>

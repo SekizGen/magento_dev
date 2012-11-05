@@ -1,0 +1,1120 @@
+<script type="text/javascript">
+  var counties = new Array();
+  var cities = new Array();
+  var fittingtypes = new Array();
+  var simpleproducts = new Array();
+  var currentcart = new Array();
+  <?php echo $this->getFittingOptionsArray() ?>
+</script>
+
+<div id="kolayoto_teslimat_sekli_sec"> </div>
+<div id="tab" style="display:none;">
+  <div class="tab-label"><h3><?php echo $this->__('Teslimat şeklini seç') ?></h3></div>
+  <div id="tab_bas"></div>
+  <div id="tab_kutular"></div>
+</div>
+
+
+
+
+
+<div style="clear:both; width:0; height:0;"></div>
+<br />
+<br />
+
+
+
+
+
+<style type="text/css">
+#tab{ float:left;width:680px;background-color:#dcdcdc;padding:5px; }
+#tab_bas{ float:left;width:679px; }
+#tab_bas span{cursor:pointer; float:left;padding:8px 0;margin-left:11px;background-color:#147;color:#fff;font-weight:bold; font-size:15px; line-height:16px; width:211px; text-align:center;}
+#tab_kutular{float:left;width:679px;}
+#tab_kutular .tab_icerik{float:left;width:659px;padding:10px;background-color:#fff;display:none; padding-top:25px;}
+</style>
+
+
+<script type="text/javascript">
+  function readCookie(name) 
+  {
+    var i, c, ca, nameEQ = name + "=";
+    ca = document.cookie.split(';');
+    for(i=0;i < ca.length;i++) 
+    {
+      c = ca[i];
+      while (c.charAt(0)==' ') 
+      {
+          c = c.substring(1,c.length);
+      }
+      
+      if (c.indexOf(nameEQ) == 0) 
+      {
+          return c.substring(nameEQ.length,c.length);
+      }
+    }
+    return '';
+  }
+
+
+  function writeCookie(name,value,days) 
+  {
+    var date, expires;
+    if (days) 
+    {
+      date = new Date();
+      date.setTime(date.getTime()+(days*24*60*60*1000));
+      expires = "; expires=" + date.toGMTString();
+    }
+    else
+    {
+      expires = "";
+    }
+    document.cookie = name + "=" + value + expires + "; path=/";
+  }
+
+
+
+
+  var KendinTakLabel = 'Kendin';
+  var YerindeTakLabel = 'Yerinde';
+  var BayideTakLabel = 'Bayide';
+  
+  $j(document).ready(function(){
+
+    var icerikFittingType = '';
+    var icerikTab = '';
+    for(var i=0;i<fittingtypes.length;i++)
+    {    
+       if(fittingtypes[i][1].indexOf(BayideTakLabel)!=-1)
+       {
+          var BayideTakVarmi = 0;
+          for(var y=0;y<simpleproducts.length;y++)
+          {
+            if(simpleproducts[y][10].indexOf(BayideTakLabel)!=-1)
+            {
+              BayideTakVarmi=1;
+              break;
+            }
+          }
+
+         if(BayideTakVarmi==1)
+         {
+           icerikFittingType += '<span onclick="loadCity(\''+fittingtypes[i][1]+'\');"><img src="<?php echo $this->getSkinUrl(); ?>images/arrow.png" style="border:0; width:12px; margin-top:1px;" /> '+fittingtypes[i][1]+'</span>';
+
+           icerikTab += '<div class="tab_icerik">';
+            
+              icerikTab += '<div style="float:left; width:210px; height: 267px;">';
+                icerikTab += '<span style="font-size:17px;"><?php echo $this->__('Select City'); ?>:</span>';
+                icerikTab += '<div id="cityDiv" style="width:240px; height:32px; margin-top:10px;"></div>';
+                icerikTab += '<br />';
+                icerikTab += '<br />';
+                icerikTab += '<span style="font-size:17px;"><?php echo $this->__('Select County'); ?>:</span>';
+                icerikTab += '<div id="countyDiv" style="width:240px; height:32px; margin-top:10px;"></div>';
+              icerikTab += '</div>';
+              icerikTab += '<div id="googlemap" style="float:right; width: 434px; height: 275px; border:1px solid #ccc;"></div>';
+
+              icerikTab += '<div style="clear:both; width:0; height:30px;"></div>';
+              icerikTab += '<div id="simpleproductDiv" style="width:658px; margin-top:10px;"></div>';
+
+              icerikTab += '<div id="submitDiv" style="width: 163px; height: 51px; margin-top:43px; float:left;">';
+                //icerikTab += '<input type="button" name="submitButton" id="submitButton" value="<?php echo $this->__('Add to cart'); ?>" style="display:none; cursor:pointer; padding-left: 20px;padding-right: 20px;font-size: 18px;padding-top: 5px;padding-bottom: 5px;" />';
+                icerikTab += '<button type="button" name="submitButton" id="submitButton" class="button btn-checkout" style="display:none; cursor:pointer; padding-left: 20px;padding-right: 20px;font-size: 18px;padding-top: 5px;padding-bottom: 5px;" ><span><span><?php echo $this->__('Add to cart'); ?></span></span></button>';
+              icerikTab += '</div>';
+
+            icerikTab += '</div>';
+          }
+        }
+        else if(fittingtypes[i][1].indexOf(KendinTakLabel)!=-1)
+        {
+          var KendinTakVarmi = 0;
+          for(var y=0;y<simpleproducts.length;y++)
+          {
+            if(simpleproducts[y][10].indexOf(KendinTakLabel)!=-1)
+            {
+              KendinTakVarmi=1;
+              break;
+            }
+          }
+
+         if(KendinTakVarmi==1)
+         {
+           icerikFittingType += '<span onclick="loadCity(\''+fittingtypes[i][1]+'\');"><img src="<?php echo $this->getSkinUrl(); ?>images/arrow.png" style="border:0; width:12px; margin-top:1px;" /> '+fittingtypes[i][1]+'</span>';
+
+           icerikTab += '<div class="tab_icerik">';
+
+              icerikTab += '<span style="font-size:17px;"><?php echo $this->__('Select City'); ?>:</span>';
+              icerikTab += '<div id="cityKendinDiv" style="width:240px; height:32px; margin-top:10px;"></div>';
+              icerikTab += '<br />';
+              icerikTab += '<br />';
+              icerikTab += '<span style="font-size:17px;"><?php echo $this->__('Select County'); ?>:</span>';
+              icerikTab += '<div id="countyKendinDiv" style="width:240px; height:32px; margin-top:10px;"></div>';
+              icerikTab += '<div id="submitKendinDiv" style="width: 163px; height: 51px; margin-top:43px; float:left;">';
+                //icerikTab += '<input type="button" name="submitKendinButton" id="submitKendinButton" value="<?php echo $this->__('Add to cart'); ?>" style="display:none; cursor:pointer; padding-left: 20px;padding-right: 20px;font-size: 18px;padding-top: 5px;padding-bottom: 5px;" />';
+                icerikTab += '<button type="button" name="submitKendinButton" id="submitKendinButton" class="button btn-checkout" style="display:none; cursor:pointer; padding-left: 20px;padding-right: 20px;font-size: 18px;padding-top: 5px;padding-bottom: 5px;" ><span><span><?php echo $this->__('Add to cart'); ?></span></span></button>';
+              icerikTab += '</div>';
+          
+           icerikTab += '</div>';
+          }
+        }
+        else if(fittingtypes[i][1].indexOf(YerindeTakLabel)!=-1)
+        {
+          var YerindeTakVarmi = 0;
+          for(var y=0;y<simpleproducts.length;y++)
+          {
+            if(simpleproducts[y][10].indexOf(YerindeTakLabel)!=-1)
+            {
+              YerindeTakVarmi=1;
+              break;
+            }
+          }
+
+         if(YerindeTakVarmi==1)
+         {
+          icerikFittingType += '<span onclick="loadCity(\''+fittingtypes[i][1]+'\');"><img src="<?php echo $this->getSkinUrl(); ?>images/arrow.png" style="border:0; width:12px; margin-top:1px;" /> '+fittingtypes[i][1]+'</span>';
+
+          icerikTab += '<div class="tab_icerik">';
+            icerikTab += '<div style="float:left; width:210px; height: 173px;">';
+              icerikTab += '<span style="font-size:17px;"><?php echo $this->__('Select City'); ?>:</span>';
+              icerikTab += '<div id="cityYerindeDiv" style="width:240px; height:32px; margin-top:10px;"></div>';
+              icerikTab += '<br />';
+              icerikTab += '<br />';
+              icerikTab += '<span style="font-size:17px;"><?php echo $this->__('Select County'); ?>:</span>';
+              icerikTab += '<div id="countyYerindeDiv" style="width:240px; height:32px; margin-top:10px;"></div>';
+            icerikTab += '</div>';
+
+            icerikTab += '<div style="clear:both; width:0; height:30px;"></div>';
+
+            icerikTab += '<div id="simpleproductYerindeDiv" style="width:658px; margin-top:10px;"></div>';
+
+            icerikTab += '<div id="submitYerindeDiv" style="width: 163px; height: 51px; margin-top:43px; float:left;">';
+              //icerikTab += '<input type="button" name="submitYerindeButton" id="submitYerindeButton" value="<?php echo $this->__('Add to cart'); ?>" style="display:none; cursor:pointer; padding-left: 20px;padding-right: 20px;font-size: 18px;padding-top: 5px;padding-bottom: 5px;" />';
+              icerikTab += '<button type="button" name="submitYerindeButton" id="submitYerindeButton" class="button btn-checkout" style="display:none; cursor:pointer; padding-left: 20px;padding-right: 20px;font-size: 18px;padding-top: 5px;padding-bottom: 5px;" ><span><span><?php echo $this->__('Add to cart'); ?></span></span></button>';
+            icerikTab += '</div>';
+
+
+           icerikTab += '</div>'; 
+          }   
+        }
+    } 
+    $j('#tab_bas').html(icerikFittingType);
+    $j('#tab_kutular').html(icerikTab);
+
+
+    var aktif = 0;
+
+    var BayideTakVarmi = 0;
+    var YerindeTakVarmi = 0;
+    var KendinTakVarmi = 0;
+    
+    for(var y=0;y<simpleproducts.length;y++)
+    {
+      if(simpleproducts[y][10].indexOf(BayideTakLabel)!=-1)
+      {
+        BayideTakVarmi=1;
+        break;
+      }
+    }
+    
+    for(var y=0;y<simpleproducts.length;y++)
+    {
+      if(simpleproducts[y][10].indexOf(YerindeTakLabel)!=-1)
+      {
+        YerindeTakVarmi=1;
+        break;
+      }
+    }
+    
+    for(var y=0;y<simpleproducts.length;y++)
+    {
+      if(simpleproducts[y][10].indexOf(KendinTakLabel)!=-1)
+      {
+        KendinTakVarmi=1;
+        break;
+      }
+    }
+
+
+
+
+
+
+
+    if(readCookie('TakmaHizmeti')=='delivered' && KendinTakLabel==1)
+    {
+      if($j("#tab_bas span:eq(0)").length > 0 && $j("#tab_bas span:eq(0)").html().indexOf(KendinTakLabel)!=-1)
+      {
+        aktif = 0;
+        loadCity(KendinTakLabel);
+        writeCookie('TakmaHizmeti','',-1);
+      }
+      else if($j("#tab_bas span:eq(1)").length > 0 && $j("#tab_bas span:eq(1)").html().indexOf(KendinTakLabel)!=-1)
+      {
+        aktif = 1;
+        loadCity(KendinTakLabel);
+        writeCookie('TakmaHizmeti','',-1);
+      }
+      else if($j("#tab_bas span:eq(2)").length > 0 && $j("#tab_bas span:eq(2)").html().indexOf(KendinTakLabel)!=-1)
+      {
+        aktif = 2;
+        loadCity(KendinTakLabel);
+        writeCookie('TakmaHizmeti','',-1);
+      }
+    }
+    else if(readCookie('TakmaHizmeti')=='fullyfitted' && BayideTakVarmi==1)
+    {
+      if($j("#tab_bas span:eq(0)").length > 0 && $j("#tab_bas span:eq(0)").html().indexOf(BayideTakLabel)!=-1)
+      {
+        aktif = 0;
+        loadCity(BayideTakLabel);
+        writeCookie('TakmaHizmeti','',-1);
+      }
+      else if($j("#tab_bas span:eq(1)").length > 0 && $j("#tab_bas span:eq(1)").html().indexOf(BayideTakLabel)!=-1)
+      {
+        aktif = 1;
+        loadCity(BayideTakLabel);
+        writeCookie('TakmaHizmeti','',-1);
+      }
+      else if($j("#tab_bas span:eq(2)").length > 0 && $j("#tab_bas span:eq(2)").html().indexOf(BayideTakLabel)!=-1)
+      {
+        aktif = 2;
+        loadCity(BayideTakLabel);
+        writeCookie('TakmaHizmeti','',-1);
+      }
+    }
+    else
+    {
+      if(BayideTakVarmi==1)
+      {
+        loadCity(BayideTakLabel);
+      }
+      else if(YerindeTakVarmi==1)
+      {
+        loadCity(YerindeTakLabel);
+      }
+      else if(KendinTakVarmi==1)
+      {
+        loadCity(KendinTakLabel);
+      }
+    }
+    
+    $j("#tab_kutular .tab_icerik:eq("+aktif+")").show();
+    tab_renklendir(aktif);
+
+    $j("#tab_bas span").click(function(){
+      var index = $j("#tab_bas span").index(this);
+      if(aktif != index)
+      {
+        $j("#tab_kutular .tab_icerik:eq("+aktif+")").hide();
+        aktif = index;
+        tab_renklendir(aktif);
+        $j("#tab_kutular .tab_icerik:eq("+aktif+")").fadeIn("normal");
+      }
+    });
+
+    
+
+    $j('.product-options').css('display','none');
+    $j('.product-options-bottom').css('display','none');
+
+    $j("#submitButton").click(function () {
+    
+
+        var takmahizmeti = $j('input[name=takma]:checked').val();
+        var randevusec = $j('input[name=randevusec]:checked').val();
+        var sehir = $j('#citySelect').val();
+        
+
+
+
+        for(var z=0;z<currentcart.length;z++)
+        {
+          for(var u=0;u<simpleproducts.length;u++)
+          {
+            if(currentcart[z][2]==simpleproducts[u][9] && currentcart[z][1]!=simpleproducts[u][1] && simpleproducts[u][0]==takmahizmeti)
+            {
+              alert('Daha önce '+currentcart[z][3]+' hizmetini kullanarak ' + currentcart[z][1] + ' tedarikçisi ile sepete ürün eklemişsiniz. \n\nŞuan ' + simpleproducts[u][10] + ' hizmetini kullanarak ' + simpleproducts[u][1] + ' tedarikçisi ile ürün ekleyebilmek için sepetinizi sonuçlandırmalısınız.\n\nNot: Farklı tedarikçileri aynı sepete ekleyemezsiniz.');
+              return false;
+            }
+          }
+        }
+    
+          
+        if(sehir=='-1')
+        {
+          alert('<?php echo $this->__('You should select city'); ?>');
+          return false;
+        }
+        else if(!takmahizmeti)
+        {
+          alert('<?php echo $this->__('You should select fitting service'); ?>');
+          return false;
+        }
+        else if(!randevusec)
+        {
+          alert('<?php echo $this->__('You should select appointment date'); ?>');
+          return false;
+        }
+        else
+        {
+          var bundle = '';
+          var randevuAy = '';
+          var randevuGun = '';
+          var randevuYil = '';
+          var randevuSaat = '';
+          var randevuDakika = '';
+          var randevuZaman = '';
+
+          
+          $j("select").each( function() {
+            if($j(this).attr('id').indexOf('bundle-option-')!=-1)
+            {
+               bundle = $j(this).attr('id').replace('bundle-option-','bundle_option[')+']';
+            }
+            else if($j(this).attr('id').indexOf('options_')!=-1 && $j(this).attr('id').indexOf('_month')!=-1)
+            {
+               randevuAy = $j(this).attr('id').replace('options_','options[').replace('_month','][month]');
+            }
+            else if($j(this).attr('id').indexOf('options_')!=-1 && $j(this).attr('id').indexOf('_year')!=-1)
+            {
+               randevuYil = $j(this).attr('id').replace('options_','options[').replace('_year','][year]');
+            }
+            else if($j(this).attr('id').indexOf('options_')!=-1 && $j(this).attr('id').indexOf('_hour')!=-1)
+            {
+               randevuSaat= $j(this).attr('id').replace('options_','options[').replace('_hour','][hour]');
+            }
+            else if($j(this).attr('id').indexOf('options_')!=-1 && $j(this).attr('id').indexOf('_minute')!=-1)
+            {
+               randevuDakika= $j(this).attr('id').replace('options_','options[').replace('_minute','][minute]');
+            }
+            else if($j(this).attr('id').indexOf('options_')!=-1 && $j(this).attr('id').indexOf('_day_part')!=-1)
+            {
+               randevuZaman = $j(this).attr('id').replace('options_','options[').replace('_day_part','][day_part]');
+            }
+            else if($j(this).attr('id').indexOf('options_')!=-1 && $j(this).attr('id').indexOf('_day')!=-1)
+            {
+               randevuGun = $j(this).attr('id').replace('options_','options[').replace('_day','][day]');
+            }
+          });
+          
+          
+          
+          if(bundle=='')
+          {
+            $j('input[type="hidden"]').each( function() {
+
+              if($j(this).attr('name').indexOf('bundle_option[')!=-1)
+              {
+                 bundle = $j(this).attr('name');
+              }
+            
+            });
+          }
+          
+          
+          var adet = $j('#quantitySelect').val();
+          var url = '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>checkout/cart/add?product=<?php echo $this->getProduct()->getId(); ?>&qty='+adet+'&'+bundle+'='+takmahizmeti;
+          
+          if(randevuAy!='' && randevuGun!='' && randevuYil!='' && randevuSaat!='' && randevuDakika!='' && randevuZaman!='')
+          {
+            var parca = randevusec.split('-');
+            var zaman = '';
+            var saat = '';
+            if(parca[3]=='OO')
+            {
+              zaman = 'am';
+              saat = '09';
+            }
+            else if(parca[3]=='OS')
+            {
+              zaman = 'pm';
+              saat = '01';
+            }
+            
+            url += '&' + randevuAy + '=' + parca[1];
+            url += '&' + randevuGun + '=' + parca[0];
+            url += '&' + randevuYil + '=' + parca[2];
+            url += '&' + randevuSaat + '=' + saat ;
+            url += '&' + randevuDakika + '=00';
+            url += '&' + randevuZaman + '=' + zaman;
+            
+          }
+          
+          //console.log(url);
+          top.location=url;
+        }
+        
+    });
+
+
+
+    $j("#submitKendinButton").click(function () {
+    
+      var takmahizmeti = -1;
+      for(var x=0;x<simpleproducts.length;x++)
+      {
+        if(simpleproducts[x][10].indexOf(KendinTakLabel)!=-1)
+        { 
+          takmahizmeti = simpleproducts[x][0];
+          break;
+        }
+      }
+    
+      var sehirkendintak = $j('#cityKendinSelect').val();
+      var ilcekendintak = $j('#countyKendinSelect').val();
+    
+
+      if(takmahizmeti > -1 && sehirkendintak != -1 && ilcekendintak != -1)
+      {
+        var bundle = '';
+        
+        $j("select").each( function() {
+          if($j(this).attr('id').indexOf('bundle-option-')!=-1)
+          {
+             bundle = $j(this).attr('id').replace('bundle-option-','bundle_option[')+']';
+          }
+        });
+
+          
+        if(bundle=='')
+        {
+          $j('input[type="hidden"]').each( function() {
+
+            if($j(this).attr('name').indexOf('bundle_option[')!=-1)
+            {
+               bundle = $j(this).attr('name');
+            }
+          
+          });
+        }
+
+
+          
+
+        var adet = $j('#quantitySelect').val();
+        var url = '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>checkout/cart/add?product=<?php echo $this->getProduct()->getId(); ?>&qty='+adet+'&'+bundle+'='+takmahizmeti;
+        top.location=url;
+      }
+      else
+      {
+        alert('<?php echo $this->__('You should select city and county'); ?>');
+        return false;
+      }
+      
+    });
+
+
+    $j("#submitYerindeButton").click(function () {
+    
+        var takmahizmeti = $j('input[name=takma]:checked').val();
+        var randevusec = $j('input[name=randevusec]:checked').val();
+        var sehir = $j('#cityYerindeSelect').val();
+
+
+
+        for(var z=0;z<currentcart.length;z++)
+        {
+          for(var u=0;u<simpleproducts.length;u++)
+          {
+            if(currentcart[z][2]==simpleproducts[u][9] && currentcart[z][1]!=simpleproducts[u][1] && simpleproducts[u][0]==takmahizmeti)
+            {
+              alert('Daha önce '+currentcart[z][3]+' hizmetini kullanarak ' + currentcart[z][1] + ' tedarikçisi ile sepete ürün eklemişsiniz. \n\nŞuan ' + simpleproducts[u][10] + ' hizmetini kullanarak ' + simpleproducts[u][1] + ' tedarikçisi ile ürün ekleyebilmek için sepetinizi sonuçlandırmalısınız.\n\nNot: Farklı tedarikçileri aynı sepete ekleyemezsiniz.');
+              return false;
+            }
+          }
+        }
+    
+
+
+       if(sehir=='-1')
+        {
+          alert('<?php echo $this->__('You should select city'); ?>');
+          return false;
+        }
+        else if(!takmahizmeti)
+        {
+          alert('<?php echo $this->__('You should select fitting service'); ?>');
+          return false;
+        }
+        else if(!randevusec)
+        {
+          alert('<?php echo $this->__('You should select appointment date'); ?>');
+          return false;
+        }
+        else
+        {
+          var bundle = '';
+          var randevuAy = '';
+          var randevuGun = '';
+          var randevuYil = '';
+          var randevuSaat = '';
+          var randevuDakika = '';
+          var randevuZaman = '';
+
+          
+          $j("select").each( function() {
+            if($j(this).attr('id').indexOf('bundle-option-')!=-1)
+            {
+               bundle = $j(this).attr('id').replace('bundle-option-','bundle_option[')+']';
+            }
+            else if($j(this).attr('id').indexOf('options_')!=-1 && $j(this).attr('id').indexOf('_month')!=-1)
+            {
+               randevuAy = $j(this).attr('id').replace('options_','options[').replace('_month','][month]');
+            }
+            else if($j(this).attr('id').indexOf('options_')!=-1 && $j(this).attr('id').indexOf('_year')!=-1)
+            {
+               randevuYil = $j(this).attr('id').replace('options_','options[').replace('_year','][year]');
+            }
+            else if($j(this).attr('id').indexOf('options_')!=-1 && $j(this).attr('id').indexOf('_hour')!=-1)
+            {
+               randevuSaat= $j(this).attr('id').replace('options_','options[').replace('_hour','][hour]');
+            }
+            else if($j(this).attr('id').indexOf('options_')!=-1 && $j(this).attr('id').indexOf('_minute')!=-1)
+            {
+               randevuDakika= $j(this).attr('id').replace('options_','options[').replace('_minute','][minute]');
+            }
+            else if($j(this).attr('id').indexOf('options_')!=-1 && $j(this).attr('id').indexOf('_day_part')!=-1)
+            {
+               randevuZaman = $j(this).attr('id').replace('options_','options[').replace('_day_part','][day_part]');
+            }
+            else if($j(this).attr('id').indexOf('options_')!=-1 && $j(this).attr('id').indexOf('_day')!=-1)
+            {
+               randevuGun = $j(this).attr('id').replace('options_','options[').replace('_day','][day]');
+            }
+          });
+
+
+
+          if(bundle=='')
+          {
+            $j("input").each( function() {
+
+              if($j(this).attr('name').indexOf('bundle_option')!=-1)
+              {
+                 bundle = $j(this).attr('name').replace('bundle_option','bundle_option[')+']';
+              }
+            
+            });
+          }
+
+          
+          
+          var adet = $j('#quantitySelect').val();
+          var url = '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>checkout/cart/add?product=<?php echo $this->getProduct()->getId(); ?>&qty='+adet+'&'+bundle+'='+takmahizmeti;
+          
+          if(randevuAy!='' && randevuGun!='' && randevuYil!='' && randevuSaat!='' && randevuDakika!='' && randevuZaman!='')
+          {
+            var parca = randevusec.split('-');
+            var zaman = '';
+            var saat = '';
+            if(parca[3]=='OO')
+            {
+              zaman = 'am';
+              saat = '09';
+            }
+            else if(parca[3]=='OS')
+            {
+              zaman = 'pm';
+              saat = '01';
+            }
+            
+            url += '&' + randevuAy + '=' + parca[1];
+            url += '&' + randevuGun + '=' + parca[0];
+            url += '&' + randevuYil + '=' + parca[2];
+            url += '&' + randevuSaat + '=' + saat ;
+            url += '&' + randevuDakika + '=00';
+            url += '&' + randevuZaman + '=' + zaman;
+            
+          }
+          
+          //console.log(url);
+          top.location=url;
+        }
+                    
+    });
+
+  });
+  
+  
+
+
+  
+  function tab_renklendir(index)
+  {
+    $j("#tab_bas span").css("background-color","#147").css("color","#fff");
+    $j("#tab_bas span:eq("+index+")").css("background-color","#fff").css("color","#147");
+  }
+
+
+
+
+  function removeCityDuplicates(inputArray) 
+  {
+      var i;
+      var len = inputArray.length;
+      var outputArray = [];
+      var temp = {};
+
+      for (i = 0; i < len; i++) 
+      {
+          temp[inputArray[i][1]] = 0;
+      }
+      
+      for (i in temp) 
+      {
+          outputArray.push(i);
+      }
+      return outputArray;
+  }
+
+  
+  function loadCity(fittingid)
+  {    
+    if(fittingid.indexOf(KendinTakLabel)!=-1)
+    {     
+      var icerikKendinCity = '';
+      icerikKendinCity += '<select name="cityKendinSelect" id="cityKendinSelect" style="width:200px; padding:7px; font-size:16px; cursor:pointer;" onchange="loadCounty(this.value,\''+fittingid+'\');">';
+      icerikKendinCity += '<option value="-1"><?php echo $this->__('Select'); ?></option>';
+      var UniqueCities = removeCityDuplicates(cities);
+      for(var i=0;i<UniqueCities.length;i++)
+      { 
+       icerikKendinCity += '<option value="'+UniqueCities[i]+'">'+UniqueCities[i]+'</option>';
+      }
+      icerikKendinCity += '</select>';                    
+      $j('#cityKendinDiv').html(icerikKendinCity);
+
+
+      var icerikKendinCounty = '';
+      icerikKendinCounty += '<select name="countyKendinSelect" id="countyKendinSelect" style="width:200px; padding:7px; font-size:16px; cursor:pointer;" onchange="loadProduct(this.value,\''+fittingid+'\');">';
+      icerikKendinCounty += '<option value="-1"><?php echo $this->__('Select'); ?></option>';
+      icerikKendinCounty += '</select>';                  
+      $j('#countyKendinDiv').html(icerikKendinCounty);   
+    }
+    else if(fittingid.indexOf(YerindeTakLabel)!=-1)
+    {
+      var icerikYerindeCity = '';
+      icerikYerindeCity += '<select name="cityYerindeSelect" id="cityYerindeSelect" style="width:200px; padding:7px; font-size:16px; cursor:pointer;" onchange="loadCounty(this.value,\''+fittingid+'\');">';
+      icerikYerindeCity += '<option value="-1"><?php echo $this->__('Select'); ?></option>';
+      var UniqueCities = removeCityDuplicates(cities);
+      for(var i=0;i<UniqueCities.length;i++)
+      { 
+       icerikYerindeCity += '<option value="'+UniqueCities[i]+'">'+UniqueCities[i]+'</option>';
+      }
+      icerikYerindeCity += '</select>';                    
+      $j('#cityYerindeDiv').html(icerikYerindeCity);
+
+
+      var icerikYerindeCounty = '';
+      icerikYerindeCounty += '<select name="countyYerindeSelect" id="countyYerindeSelect" style="width:200px; padding:7px; font-size:16px; cursor:pointer;" onchange="loadProduct(this.value,\''+fittingid+'\');">';
+      icerikYerindeCounty += '<option value="-1"><?php echo $this->__('Select'); ?></option>';
+      icerikYerindeCounty += '</select>';                  
+      $j('#countyYerindeDiv').html(icerikYerindeCounty);    
+    
+
+    
+      $j('#simpleproductYerindeDiv').html('');
+    }
+    else if(fittingid.indexOf(BayideTakLabel)!=-1)
+    {
+      setTimeout(function(){
+        var map = new google.maps.Map(document.getElementById('googlemap'), {
+          zoom: 5,
+          center: new google.maps.LatLng(38.963745,35.243322),
+          mapTypeId: google.maps.MapTypeId.ROADMAP,
+          scrollwheel: false
+        });
+      },4000);
+
+
+      var icerikCity = '';
+      icerikCity += '<select name="citySelect" id="citySelect" style="width:200px; padding:7px; font-size:16px; cursor:pointer;" onchange="loadCounty(this.value,\''+fittingid+'\');">';
+      icerikCity += '<option value="-1"><?php echo $this->__('Select'); ?></option>';
+      var UniqueCities = removeCityDuplicates(cities);
+      for(var i=0;i<UniqueCities.length;i++)
+      { 
+       icerikCity += '<option value="'+UniqueCities[i]+'">'+UniqueCities[i]+'</option>';
+      }
+      icerikCity += '</select>';                    
+      $j('#cityDiv').html(icerikCity);
+
+
+      var icerikCounty = '';
+      icerikCounty += '<select name="countySelect" id="countySelect" style="width:200px; padding:7px; font-size:16px; cursor:pointer;" onchange="loadProduct(this.value,\''+fittingid+'\');">';
+      icerikCounty += '<option value="-1"><?php echo $this->__('Select'); ?></option>';
+      icerikCounty += '</select>';
+      $j('#countyDiv').html(icerikCounty);
+
+
+      $j('#simpleproductDiv').html('');
+
+    }
+  }
+  
+  
+  
+  
+  
+  
+  
+  function SimpleProductVarmi(aranan)
+  {
+    var sonuc = 0;
+    for(var i=0;i<simpleproductsTmp.length;i++)
+    {
+      if(simpleproductsTmp[i]==aranan)
+      {
+        sonuc = 1;
+        break;
+      }
+      else
+      {
+        sonuc = 0;
+      }
+    }
+    return sonuc;
+  }
+  
+  
+  
+  
+  
+  var simpleproductsTmp = new Array();
+  function loadCounty(city,fittingid)
+  {  
+    simpleproductsTmp = new Array();
+    var icerikProduct = '<span style="font-size:17px;"><?php echo $this->__('Choose Fitting Service'); ?></span>';
+
+
+    var icerik = '';
+    if(fittingid.indexOf(BayideTakLabel)!=-1) 
+    {
+      icerik += '<select name="countySelect" id="countySelect" style="width:200px; padding:7px; font-size:16px; cursor:pointer;" onchange="loadProduct(this.value,\''+fittingid+'\');">';
+    }
+    else if(fittingid.indexOf(YerindeTakLabel)!=-1)
+    {
+      icerik += '<select name="countyYerindeSelect" id="countyYerindeSelect" style="width:200px; padding:7px; font-size:16px; cursor:pointer;" onchange="loadProduct(this.value,\''+fittingid+'\');">';
+    }
+    else if(fittingid.indexOf(KendinTakLabel)!=-1)
+    {
+      icerik += '<select name="countyKendinSelect" id="countyKendinSelect" style="width:200px; padding:7px; font-size:16px; cursor:pointer;">';
+      $j('#submitKendinButton').css('display','');
+    }
+    icerik += '<option value="-1"><?php echo $this->__('Select'); ?></option>';
+    
+    var s = 0;
+    var locations = new Array();
+    
+    for(var i=0;i<counties.length;i++)
+    { 
+      if(counties[i][1]==city)
+      {
+        icerik += '<option value="'+counties[i][0]+'">'+counties[i][2]+'</option>';
+
+
+        for(var x=0;x<simpleproducts.length;x++)
+        {
+          if(simpleproducts[x][2].indexOf(','+counties[i][0]+',')!=-1 && simpleproducts[x][10].indexOf(fittingid)!=-1 && SimpleProductVarmi(simpleproducts[x][0])==0)
+          {
+             var locationOne = simpleproducts[x][1]+','+simpleproducts[x][3]+','+simpleproducts[x][4]+',1';
+             
+             icerikProduct += '<div id="takmahizmetilistesi'+x+s+'" class="takmahizmetilistesi" onclick="$j(\'#simpleRadio'+x+s+'\').attr(\'checked\',\'checked\');  RandevuGoster(\''+x+'\',\''+s+'\',\''+fittingid+'\'); GoogleMapGoster(\''+locationOne+'\',\''+simpleproducts[x][3]+'\',\''+simpleproducts[x][4]+'\',12); focusProduct(\''+x+'\');" style="width: 632px; height: 33px; border: 1px solid #ccc; background: #f7f8f8; margin:0 auto; margin-top:5px;padding: 10px; cursor:pointer;">';
+               icerikProduct += '<div style="font-size:15px;line-height: 14px;">';
+                 icerikProduct += '<input type="radio" id="simpleRadio'+x+s+'" name="takma" value="'+simpleproducts[x][0]+'" style="float: left;margin-right: 15px;">';
+                 icerikProduct += simpleproducts[x][1];
+               icerikProduct += '</div>';
+               icerikProduct += '<div style="float:right; font-weight:bold;">'+simpleproducts[x][8]+' TL</div>';
+             icerikProduct += '</div>';
+             icerikProduct += '<div class="randevuzamani" id="randevuzamani'+x+s+'" style="display:none; border: 1px solid #666; height: 115px; width: 560px; position: relative; margin-top: -133px; margin-left: 13px; margin-bottom: 18px;">Randevu Tarihi:</div>';
+             
+             locations[s] = new Array(simpleproducts[x][1], simpleproducts[x][3],simpleproducts[x][4], 1);
+              
+             s++;
+             
+             simpleproductsTmp[s] = simpleproducts[x][0];
+             
+          }
+        }
+
+      }
+    } 
+    icerik += '</select>';
+    if(fittingid.indexOf(BayideTakLabel)!=-1) { $j('#countyDiv').html(icerik); $j('#simpleproductDiv').html(icerikProduct); }
+    else if(fittingid.indexOf(YerindeTakLabel)!=-1) { $j('#countyYerindeDiv').html(icerik); $j('#simpleproductYerindeDiv').html(icerikProduct); }
+    else if(fittingid.indexOf(KendinTakLabel)!=-1) { $j('#countyKendinDiv').html(icerik);  }
+
+    if(fittingid.indexOf(BayideTakLabel)!=-1) 
+    { 
+      if(locations.length > 0)
+      {
+        GoogleMapGoster(locations,locations[0][1],locations[0][2],8); 
+      }   
+    }
+  }
+
+   
+      
+  
+  function loadProduct(countycode,fittingid)
+  {     
+      var icerik = '<span style="font-size:17px;"><?php echo $this->__('Choose Fitting Service'); ?>:</span>';
+      var varmi = 0;
+
+
+      var s = 0;
+      var locations = new Array();
+
+      for(var i=0;i<simpleproducts.length;i++)
+      {     
+        if(simpleproducts[i][2].indexOf(','+countycode+',')!=-1 && simpleproducts[i][10].indexOf(fittingid)!=-1)
+        {
+           var locationOne = simpleproducts[i][1]+','+simpleproducts[i][3]+','+simpleproducts[i][4]+',1';
+
+           icerik += '<div id="takmahizmetilistesi'+i+s+'" class="takmahizmetilistesi" onclick="$j(\'#simpleRadio'+i+s+'\').attr(\'checked\',\'checked\'); RandevuGoster(\''+i+'\',\''+s+'\',\''+fittingid+'\'); GoogleMapGoster(\''+locationOne+'\',\''+simpleproducts[i][3]+'\',\''+simpleproducts[i][4]+'\',12); focusProduct(\''+i+'\');" style="width: 632px; height: 33px; border: 1px solid #ccc; background: #f7f8f8; margin:0 auto; margin-top:5px;padding: 10px; cursor:pointer;">';
+             icerik += '<div style="font-size:15px;line-height: 14px;">';
+               icerik += '<input type="radio" id="simpleRadio'+i+s+'" name="takma" value="'+simpleproducts[i][0]+'" style="float: left;margin-right: 15px;">';
+               icerik += simpleproducts[i][1];
+             icerik += '</div>';
+             icerik += '<div style="float:right; font-weight:bold;">'+simpleproducts[i][8]+' TL</div>';
+           icerik += '</div>';
+           icerik += '<div class="randevuzamani" id="randevuzamani'+i+s+'" style="display:none; border: 1px solid #666; height: 115px; width: 560px; position: relative; margin-top: -133px; margin-left: 13px; margin-bottom: 18px;">Randevu Tarihi:</div>';
+           
+           locations[s] = new Array(simpleproducts[i][1], simpleproducts[i][3],simpleproducts[i][4], 1);
+            
+           s++;
+           varmi++;
+        }
+      } 
+      if(fittingid.indexOf(BayideTakLabel)!=-1){ $j('#simpleproductDiv').html(icerik); }
+      else if(fittingid.indexOf(YerindeTakLabel)!=-1){ $j('#simpleproductYerindeDiv').html(icerik); }
+
+      if(countycode != -1)
+      {
+        if(varmi == 0)
+        {
+          var customerid = '<?php echo Mage::helper('customer')->getCustomer()->getId(); ?>';
+          
+          var countycodedefined = '';
+          for(var i=0;i<counties.length;i++)
+          {     
+            if(counties[i][0] == countycode)
+            {
+               countycodedefined = counties[i][3];
+               break;
+            }
+          }
+          
+          if(fittingid.indexOf(BayideTakLabel)!=-1)
+          {
+            var telicerik = '';
+            telicerik += '<br />';
+            telicerik += '<span style="font-size:13px;"><?php echo $this->__('We have no fitting service in this location'); ?></span>';
+            telicerik += '<br />';
+            telicerik += '<br />';
+            telicerik += '<span style="font-size:17px;"><?php echo $this->__('Telephone Number'); ?>:</span>';
+            telicerik += '<br />';
+            telicerik += '<input type="text" id="tel" style="width:200px; padding:7px; font-size:16px;" />';
+            telicerik += '<br />';
+            telicerik += '<br />';
+            telicerik += '<input type="button" value="Gönder" onclick="TelKayit(\''+countycodedefined+'\',\''+customerid+'\',$j(\'#tel\').val());" style="font-size: 16px;padding: 8px;padding-left: 20px;padding-right: 20px;" />';
+            $j('#simpleproductDiv').html(telicerik);            
+          }
+          else
+          {
+            var telicerik = '';
+            telicerik += '<br />';
+            telicerik += '<span style="font-size:13px;"><?php echo $this->__('We have no fitting service in this location'); ?></span>';
+            telicerik += '<br />';
+            telicerik += '<br />';
+            telicerik += '<span style="font-size:17px;"><?php echo $this->__('Telephone Number'); ?>:</span>';
+            telicerik += '<br />';
+            telicerik += '<input type="text" id="tel" style="width:200px; padding:7px; font-size:16px;" />';
+            telicerik += '<br />';
+            telicerik += '<br />';
+            telicerik += '<input type="button" value="Gönder" onclick="TelKayit(\''+countycodedefined+'\',\''+customerid+'\',$j(\'#tel\').val());" style="font-size: 16px;padding: 8px;padding-left: 20px;padding-right: 20px;"  />';
+            $j('#simpleproductYerindeDiv').html(telicerik);      
+          }
+        }
+        else
+        {
+          if(locations.length > 0)
+          {
+            GoogleMapGoster(locations,locations[0][1],locations[0][2],8);
+          }
+        }
+      }
+      else
+      {
+        if(fittingid.indexOf(BayideTakLabel)!=-1)
+        {
+          setTimeout(function(){
+            var map = new google.maps.Map(document.getElementById('googlemap'), {
+              zoom: 5,
+              center: new google.maps.LatLng(38.963745,35.243322),
+              mapTypeId: google.maps.MapTypeId.ROADMAP
+            });
+          },4000);
+          $j('#simpleproductDiv').html('');
+        }
+        else
+        {
+          $j('#simpleproductYerindeDiv').html('');
+        }
+      }
+  }
+
+
+
+
+  function TelKayit(countycodedefined,customerid,tel)
+  {
+    alert('<?php echo $this->__('We will contact with you as soon as possible'); ?>');
+
+    $j.post('<?php echo $this->getUrl('lastikview/ajax/index'); ?>',{ countycode:countycodedefined,productid:'<?php echo $this->getProduct()->getId(); ?>',customerid:customerid,tel:tel }, function(data) { 
+      if(data!=null)
+      {
+
+      }
+    });
+  }
+
+
+  function RandevuGoster(x,s,fittingid)
+  {
+    $j('.randevuzamani').css('display','none'); 
+    $j('.takmahizmetilistesi').css('height','33px'); 
+    $j('#randevuzamani'+x+s).css('display',''); 
+    $j('#takmahizmetilistesi'+x+s).css('height','155px');
+    
+    var randevutarih = '';
+    <?php
+      $bugun = date("d-m-Y");
+      $tarih1 =strtotime(date("d-m-Y", strtotime($bugun)) . " +1 day");
+      $tarih2 = strtotime(date("d-m-Y", strtotime($bugun)) . " +2 days");
+      $tarih3 = strtotime(date("d-m-Y", strtotime($bugun)) . " +3 days");
+      $tarih4 = strtotime(date("d-m-Y", strtotime($bugun)) . " +4 days");
+      $tarih5 = strtotime(date("d-m-Y", strtotime($bugun)) . " +5 days");
+
+      $tarih1Gun = date('N',$tarih1);
+      $tarih2Gun = date('N',$tarih2);
+      $tarih3Gun = date('N',$tarih3);
+      $tarih4Gun = date('N',$tarih4);
+      $tarih5Gun = date('N',$tarih5);
+    ?>
+
+
+
+    randevutarih += '<div>';
+      randevutarih += '<div style="width:50px; padding:5px; background:#ccc; color:#000; float:left;">Saat</div>';
+      randevutarih += '<div style="width:90px; padding:5px; background:#eee; color:#000; float:left; text-align:center;"><?php echo date('d.m.Y',$tarih1); ?></div>';
+      randevutarih += '<div style="width:90px; padding:5px; background:#eee; color:#000; float:left; text-align:center;"><?php echo date('d.m.Y',$tarih2); ?></div>';
+      randevutarih += '<div style="width:90px; padding:5px; background:#eee; color:#000; float:left; text-align:center;"><?php echo date('d.m.Y',$tarih3); ?></div>';
+      randevutarih += '<div style="width:90px; padding:5px; background:#eee; color:#000; float:left; text-align:center;"><?php echo date('d.m.Y',$tarih4); ?></div>';
+      randevutarih += '<div style="width:90px; padding:5px; background:#eee; color:#000; float:left; text-align:center;"><?php echo date('d.m.Y',$tarih5); ?></div>';
+      randevutarih += '<div style="clear:both; width:0;height:0;"></div>';
+    randevutarih += '</div>';
+
+    randevutarih += '<div>';
+      randevutarih += '<div style="width:50px; padding:5px; background:#ccc; color:#000; float:left;">09:00 - 12:30</div>';
+      randevutarih += '<div style="width:90px; padding:5px; background:#fff; color:#000; float:left; text-align:center;"><?php if($tarih1Gun!=6 && $tarih1Gun!=7){ ?><input type="radio" id="randevusec'+x+s+'" name="randevusec" onclick="SepeteEkleGoster(\''+fittingid+'\');" value="<?php echo date('d-m-Y',$tarih1); ?>-OO" /><?php } else { ?>X<?php } ?></div>';
+      randevutarih += '<div style="width:90px; padding:5px; background:#fff; color:#000; float:left; text-align:center;"><?php if($tarih2Gun!=6 && $tarih2Gun!=7){ ?><input type="radio" id="randevusec'+x+s+'" name="randevusec" onclick="SepeteEkleGoster(\''+fittingid+'\');" value="<?php echo date('d-m-Y',$tarih2); ?>-OO" /><?php } else { ?>X<?php } ?></div>';
+      randevutarih += '<div style="width:90px; padding:5px; background:#fff; color:#000; float:left; text-align:center;"><?php if($tarih3Gun!=6 && $tarih3Gun!=7){ ?><input type="radio" id="randevusec'+x+s+'" name="randevusec" onclick="SepeteEkleGoster(\''+fittingid+'\');" value="<?php echo date('d-m-Y',$tarih3); ?>-OO" /><?php } else { ?>X<?php } ?></div>';
+      randevutarih += '<div style="width:90px; padding:5px; background:#fff; color:#000; float:left; text-align:center;"><?php if($tarih4Gun!=6 && $tarih4Gun!=7){ ?><input type="radio" id="randevusec'+x+s+'" name="randevusec" onclick="SepeteEkleGoster(\''+fittingid+'\');" value="<?php echo date('d-m-Y',$tarih4); ?>-OO" /><?php } else { ?>X<?php } ?></div>';
+      randevutarih += '<div style="width:90px; padding:5px; background:#fff; color:#000; float:left; text-align:center;"><?php if($tarih5Gun!=6 && $tarih5Gun!=7){ ?><input type="radio" id="randevusec'+x+s+'" name="randevusec" onclick="SepeteEkleGoster(\''+fittingid+'\');" value="<?php echo date('d-m-Y',$tarih5); ?>-OO" /><?php } else { ?>X<?php } ?></div>';
+      randevutarih += '<div style="clear:both; width:0;height:0;"></div>';
+    randevutarih += '</div>';
+    
+    randevutarih += '<div>';
+      randevutarih += '<div style="width:50px; padding:5px; background:#ccc; color:#000; float:left;">13:00 - 17:30</div>';
+      randevutarih += '<div style="width:90px; padding:5px; background:#fff; color:#000; float:left; text-align:center;"><?php if($tarih1Gun!=6 && $tarih1Gun!=7){ ?><input type="radio" id="randevusec'+x+s+'" name="randevusec" onclick="SepeteEkleGoster(\''+fittingid+'\');" value="<?php echo date('d-m-Y',$tarih1); ?>-OS" /><?php } else { ?>X<?php } ?></div>';
+      randevutarih += '<div style="width:90px; padding:5px; background:#fff; color:#000; float:left; text-align:center;"><?php if($tarih2Gun!=6 && $tarih2Gun!=7){ ?><input type="radio" id="randevusec'+x+s+'" name="randevusec" onclick="SepeteEkleGoster(\''+fittingid+'\');" value="<?php echo date('d-m-Y',$tarih2); ?>-OS" /><?php } else { ?>X<?php } ?></div>';
+      randevutarih += '<div style="width:90px; padding:5px; background:#fff; color:#000; float:left; text-align:center;"><?php if($tarih3Gun!=6 && $tarih3Gun!=7){ ?><input type="radio" id="randevusec'+x+s+'" name="randevusec" onclick="SepeteEkleGoster(\''+fittingid+'\');" value="<?php echo date('d-m-Y',$tarih3); ?>-OS" /><?php } else { ?>X<?php } ?></div>';
+      randevutarih += '<div style="width:90px; padding:5px; background:#fff; color:#000; float:left; text-align:center;"><?php if($tarih4Gun!=6 && $tarih4Gun!=7){ ?><input type="radio" id="randevusec'+x+s+'" name="randevusec" onclick="SepeteEkleGoster(\''+fittingid+'\');" value="<?php echo date('d-m-Y',$tarih4); ?>-OS" /><?php } else { ?>X<?php } ?></div>';
+      randevutarih += '<div style="width:90px; padding:5px; background:#fff; color:#000; float:left; text-align:center;"><?php if($tarih5Gun!=6 && $tarih5Gun!=7){ ?><input type="radio" id="randevusec'+x+s+'" name="randevusec" onclick="SepeteEkleGoster(\''+fittingid+'\');" value="<?php echo date('d-m-Y',$tarih5); ?>-OS" /><?php } else { ?>X<?php } ?></div>';
+      randevutarih += '<div style="clear:both; width:0;height:0;"></div>';
+    randevutarih += '</div>';
+
+    $j('#randevuzamani'+x+s).html(randevutarih);
+  }
+  
+  
+  function SepeteEkleGoster(fittingid)
+  {
+    if(fittingid.indexOf(BayideTakLabel)!=-1) 
+    {
+      $j('#submitButton').css('display','');
+    }
+    else if(fittingid.indexOf(YerindeTakLabel)!=-1)
+    {
+      $j('#submitYerindeButton').css('display','');
+    }
+  }
+  
+  
+  
+  
+  function focusProduct(index)
+  {
+    /*
+    $j('#priceDiv').html(parseFloat(parseFloat(<?php echo number_format($this->getProduct()->getPrice(),2); ?>)+parseFloat(simpleproducts[index][8])) + ' TL');   
+    */   
+  }
+  
+  
+  
+  function GoogleMapGoster(locations,center1,center2,zoom)
+  {       
+    var map = new google.maps.Map(document.getElementById('googlemap'), {
+      zoom: zoom,
+      center: new google.maps.LatLng(center1,center2),
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      scrollwheel: false
+    });
+
+    var infowindow = new google.maps.InfoWindow();
+
+    var marker, i;
+
+    if(locations.indexOf(',')!=-1)
+    {
+      var parca = locations.split(',');
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(parca[1], parca[2]),
+        map: map
+      });
+
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+          return function() {
+            infowindow.setContent(parca[0]);
+            infowindow.open(map, marker);
+          }
+      })(marker, i));
+
+      google.maps.event.addListenerOnce(map, 'tilesloaded', function() { 
+        google.maps.event.trigger(this, 'resize'); 
+      }); 
+    }
+    else
+    {
+      for (i = 0; i < locations.length; i++) 
+      {  
+        marker = new google.maps.Marker({
+          position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+          map: map
+        });
+
+        google.maps.event.addListener(marker, 'click', (function(marker, i) {
+            return function() {
+              infowindow.setContent(locations[i][0]);
+              infowindow.open(map, marker);
+            }
+          })(marker, i));
+
+        google.maps.event.addListenerOnce(map, 'tilesloaded', function() { 
+          google.maps.event.trigger(this, 'resize'); 
+        }); 
+
+      }
+    }
+  }
+
+</script>

@@ -1,0 +1,8 @@
+<config>
+    <modules>
+        <Sekizgen_Randevu>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Sekizgen_Randevu>
+    </modules>
+</config>

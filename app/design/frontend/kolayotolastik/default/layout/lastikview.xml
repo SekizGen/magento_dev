@@ -1,0 +1,28 @@
+<layout version="0.1.0">
+  <catalog_product_view>
+    <reference name="head">
+
+      <action method="addItem">
+        <type>skin_js</type>
+        <name>plugins/jquery-1.8.0.min.js</name>
+        <params/>
+      </action>
+
+      <block type="core/text" name="google.cdn.jquery">
+        <action method="setText"><text><![CDATA[<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script><script type="text/javascript">var $j = jQuery.noConflict();</script>]]></text></action>
+      </block>
+
+    </reference>
+
+    <reference name="product.info">
+        <block type="sekizgen_lastikview/fitting" name="sekizgen.lastikview.fitting" as="fitting" template="lastikview/fitting.phtml" />
+        <!--
+        <block type="catalog/product_view_attributes" name="sekizgen.lastikview.attributes" as="sekizgen_attributes" template="catalog/product/view/attributes.phtml" />
+        <block type="catalog/product_view_description" name="sekizgen.lastikview.description" as="sekizgen_description" template="catalog/product/view/description.phtml" />
+        -->
+        <action method="setTierPriceTemplate">
+          <template>catalog/product/view/kolayoto_price.phtml</template>
+        </action>         
+    </reference>
+  </catalog_product_view>
+</layout>

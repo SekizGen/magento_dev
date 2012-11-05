@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * @category    Sample
+ * @package     Sample_WidgetTwo
+ * @copyright   Copyright (c) 2009 Irubin Consulting Inc. DBA Varien (http://www.varien.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+-->
+<config>
+    <modules>
+        <Sekizgen_Search>
+            <version>0.0.1</version>
+        </Sekizgen_Search>
+    </modules>
+    <global>
+        <helpers>
+            <search>
+                <class>Sekizgen_Search_Helper</class>
+            </search>
+        </helpers>
+        <blocks>
+             <search>
+                <class>Sekizgen_Search_Block</class>
+             </search>
+        </blocks>
+        <models>
+             <search>
+                <class>Sekizgen_Search_Model</class>
+             </search>
+        </models>
+    </global>
+    
+      
+
+    <frontend>
+      <routers>
+        <search>
+          <use>standard</use>
+          <args>
+            <module>Sekizgen_Search</module>
+            <frontName>search</frontName>
+          </args>
+        </search>
+      </routers>
+      <layout>
+        <updates>
+          <search>
+            <file>search.xml</file>
+          </search>
+        </updates>
+      </layout>
+      <translate>
+          <modules>
+              <search>
+                  <files>
+                      <default>Sekizgen_Search.csv</default>
+                  </files>
+              </search>
+          </modules>
+      </translate>
+    </frontend>
+  
+</config>

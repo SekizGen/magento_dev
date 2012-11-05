@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * @category    Sample
+ * @package     Sample_WidgetTwo
+ * @copyright   Copyright (c) 2009 Irubin Consulting Inc. DBA Varien (http://www.varien.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+-->
+<config>
+    <modules>
+        <Sekizgen_Lastikview>
+            <version>0.1.1</version>
+        </Sekizgen_Lastikview>
+    </modules>
+    
+
+    <admin>
+        <routers>
+            <sekizgen_lastikview>
+                <use>admin</use>
+                <args>
+                    <module>Sekizgen_Lastikview</module>
+                    <frontName>lastikview</frontName>
+                </args>
+            </sekizgen_lastikview>
+        </routers>
+    </admin>
+
+
+	
+	<global>
+
+	    <models>
+	        <sekizgen_lastikview>
+	            <class>Sekizgen_Lastikview_Model</class>
+	            <resourceModel>sekizgen_lastik_resource</resourceModel>
+	        </sekizgen_lastikview>
+	        
+	        <sekizgen_lastik_resource>
+	            <class>Sekizgen_Lastikview_Model_Resource</class>
+	            <entities>
+	                <countyselection>
+	                    <table>sekizgen_lastikview_county_selection</table>
+	                </countyselection>
+	            </entities>	            
+	        </sekizgen_lastik_resource>	        
+	    </models>	
+	    
+	    
+	    <resources>
+	        <sekizgen_lastikview_setup>
+	            <setup>
+	                <module>Sekizgen_Lastikview</module>
+	                <class>Sekizgen_Lastikview_Model_Resource_Setup</class>
+	            </setup>
+	        </sekizgen_lastikview_setup>
+	    </resources>	 
+	    
+	    <blocks>
+	    	<sekizgen_lastikview>
+		    	<class>Sekizgen_Lastikview_Block</class>
+	    	</sekizgen_lastikview>
+	    </blocks>	 
+
+        <helpers>
+            <sekizgen_lastikview>
+                <class>Sekizgen_Lastikview_Helper</class>
+            </sekizgen_lastikview>
+        </helpers>      	
+	    
+	</global>
+
+
+    <frontend>
+      <routers>
+        <lastikview>
+          <use>standard</use>
+          <args>
+            <module>Sekizgen_Lastikview</module>
+            <frontName>lastikview</frontName>
+          </args>
+        </lastikview>
+      </routers>
+      <layout>
+        <updates>
+          <lastikview>
+            <file>lastikview.xml</file>
+          </lastikview>
+        </updates>
+      </layout>
+      <translate>
+          <modules>
+              <lastikview>
+                  <files>
+                      <default>Sekizgen_Lastikview.csv</default>
+                  </files>
+              </lastikview>
+          </modules>
+      </translate>
+    </frontend>
+
+
+
+    
+</config>

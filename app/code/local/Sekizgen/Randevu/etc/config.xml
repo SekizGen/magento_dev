@@ -1,0 +1,54 @@
+<config>
+    <modules>
+        <Sekizgen_Randevu>
+            <version>0.1.0</version>
+        </Sekizgen_Randevu>
+    </modules>
+    
+    <global>
+	    <models>
+            <sekizgen_randevu>
+                <class>Sekizgen_Randevu_Model</class>
+            </sekizgen_randevu>
+	    </models>
+
+	    <blocks>
+            <sekizgen_randevu>
+                <class>Sekizgen_Randevu_Block</class>
+            </sekizgen_randevu>
+	    </blocks>
+
+	    <helpers>
+	        <sekizgen_randevu>
+	            <class>Sekizgen_Randevu_Helper</class>
+	        </sekizgen_randevu>
+	    </helpers> 
+
+        <events>
+            <catalog_product_save_before>
+                <observers>
+                    <Sekizgen_randevu_model_observer>
+                        <type>singleton</type>
+                        <class>Sekizgen_Randevu_Model_Observer</class>
+                        <method>addRandevuOption</method>
+                    </Sekizgen_randevu_model_observer>
+                </observers>
+            </catalog_product_save_before>
+        </events>
+    </global>    
+    
+    
+    <admin>
+        <routers>
+            <sekizgen_randevu>
+                <use>admin</use>
+                <args>
+                    <module>Sekizgen_Randevu</module>
+                    <frontName>randevu</frontName>
+                </args>
+            </sekizgen_randevu>
+        </routers>
+    </admin>
+        
+    
+</config>

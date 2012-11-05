@@ -1,0 +1,118 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * @category    Sample
+ * @package     Sample_WidgetTwo
+ * @copyright   Copyright (c) 2009 Irubin Consulting Inc. DBA Varien (http://www.varien.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+/**
+ * @var $this Sample_WidgetTwo_Block_List
+ * @see Sample_WidgetTwo_Block_List
+ */
+?>
+
+
+
+<?php
+foreach ($list as $item)
+{
+?>
+
+
+<?php 
+$id = 'slider-code';
+if($item['service']=='mostviewed')
+{
+  echo '<h3>'.Mage::Helper('carousel')->__('Most Viewed Product').'</h3>';
+  $id = 'slider-code';
+} 
+else if($item['service']=='featured')
+{
+  echo '<h3>'.Mage::Helper('carousel')->__('Featured Product').'</h3>';
+  $id = 'slider-code2';
+} 
+?>
+
+
+  <div id="<?php echo $id; ?>">
+    <a class="buttons prev" href="#"></a>
+    <div class="viewport">
+      <ul class="overview">
+        <?php
+          for($i=0;$i<count($item['data']);$i++)
+          {
+        ?>
+            <li>
+              <a href="<?php echo $item['data'][$i]['productUrl']; ?>" title="<?php echo $item['data'][$i]['productLabel']; ?>">
+                <img src="<?php echo $item['data'][$i]['imageSrc']; ?>" alt="<?php echo $item['data'][$i]['imageLabel']; ?>" title="<?php echo $item['data'][$i]['imageLabel']; ?>" style="margin:0 auto;" />
+              </a>
+              <h4>
+                <a href="<?php echo $item['data'][$i]['productUrl']; ?>" title="<?php echo $item['data'][$i]['productLabel']; ?>" style="color: #fff; font-size: 16px;"><?php echo $item['data'][$i]['productLabel']; ?></a>
+                <br />
+                <div style="padding-right: 10px; text-align: right;font-size: 14px; color:#000; padding-bottom:5px;"><?php echo $item['data'][$i]['price']; ?></div>
+              </h4>
+            </li>
+        <?php
+          } 
+        ?>
+      </ul>
+    </div>
+    <a class="buttons next" href="#"></a>
+  </div>
+  <div class="clear"></div>
+
+
+  <script type="text/javascript">
+    var $j = jQuery.noConflict();
+    
+    if ($j("#<?php echo $id; ?>").length) 
+    {  
+      $j(document).ready(function(){
+        $j.fn.showFeatureText = function() {
+          return this.each(function(){    
+          var box = $j(this);
+          var text = $j('h4',this);    
+        
+          text.css({ position: 'absolute', bottom: '0px' }).hide();
+        
+          box.hover(function(){
+            text.slideDown("fast");
+          },function(){
+            text.slideUp("fast");
+          });
+        
+          });
+        }
+          
+        $j('#<?php echo $id; ?> .overview li').showFeatureText();
+        
+        $j('#<?php echo $id; ?>').tinycarousel({
+          start: 1, // where should the carousel start?
+          display: 4, // how many blocks do you want to move at 1 time?
+          axis: 'x', // vertical or horizontal scroller? ( x || y ).
+          controls: true, // show left and right navigation buttons.
+          pager: false, // is there a page number navigation present?
+          interval: true, // move to another block on intervals.
+          intervaltime: <?php echo $item['timer']; ?>, // interval time in milliseconds.
+          rewind: false, // If interval is true and rewind is true it will play in reverse if the last slide is reached.
+          animation: true, // false is instant, true is animate.
+          duration: 1000, // how fast must the animation move in ms?
+          callback: null // function that executes after every move
+        });
+      });
+    }
+  </script>
+<?php } ?>

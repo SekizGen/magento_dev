@@ -1,0 +1,83 @@
+<?php 
+
+$_product = $this->getProduct();
+$_price = $_product->getPrice();
+$_msrp = $_product->getMsrp();
+$_oran = ( ( $_msrp - $_price ) / $_msrp ) * 100;
+
+?>
+<br/> 
+<div class="right" style="margin-top: 10px;">
+	<button type="button" class="button btn-checkout" onclick="TabAc();" ><span><span style="padding:0 5px 0 0px;"><?php echo $this->__('Sipariş Ver'); ?></span></span></button>
+</div>
+<div class="right" style="width: 154px;">
+  <div style="font-size: 11px;font-weight: bold;text-transform: uppercase;white-space: nowrap;color: black;margin-top: 1px;"><?php echo $this->__('Product Quantity'); ?>:</div>
+  <select name="quantitySelect" id="quantitySelect" style="width:120px; padding: 2px; font-size: 14px; cursor:pointer;margin-top: 8px;">
+    <option value="0"><?php echo $this->__('Select'); ?></option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+  </select>
+</div>
+
+<?php if($_price >= $_msrp){ ?>
+
+
+<div class="kolayoto-price-box">
+	<div class="regular-price">
+		<div class="price-label"><?php echo $this->__('KolayOto Price'); ?>:</div>	
+		<div class="price">
+			<?php echo Mage::app()->getStore()->formatPrice($_price) ?>
+		</div>
+	</div>
+</div>
+
+
+
+<?php }else{ ?> 
+
+<div class="kolayoto-price-box">
+	<div class="discount-rate right">
+		<div class="rate">
+			<?php echo "%".round($_oran) ?>
+		</div>
+		<div class="rate-label"><?php echo $this->__('indirim'); ?></div>
+	</div>
+	<div class="old-price">
+		<div class="price">
+			<?php echo Mage::app()->getStore()->formatPrice($_msrp) ?>
+		</div>
+		<div class="price-label"><?php echo $this->__('yerine'); ?></div>
+	</div>
+	<div class="special-price">
+		<div class="price">
+			<?php echo Mage::app()->getStore()->formatPrice($_price) ?>
+		</div>
+	</div>
+	
+</div>
+
+
+<?php }?>
+
+
+<br />
+<br />
+<script type="text/javascript">
+//<![CDATA[
+	function sekizgenGoToByScroll(id){
+	     	$j('html,body').animate({scrollTop: $j("#"+id).offset().top-5},'slow');
+	}
+	
+	function TabAc()
+	{
+	sekizgenGoToByScroll('kolayoto_teslimat_sekli_sec');
+    $j('#tab').slideDown();
+	}
+    //]]>
+</script>
