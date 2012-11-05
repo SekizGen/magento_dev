@@ -63,6 +63,3 @@ Değişiklik yönetimini yapma biçiminiz de değerlendirme kriterleri arasında
 •	Bu değerlendirmeler sırasında en fazla puanı en fazla sayıda bildirim yapan alır. 
 •	Ayrıca her bir bildirim açıklamasını ne kadar detaylı yazarsanız o kadar çok puan alırsınız.
 
-Sonuç:
-Eğer temanız yukarıdaki kriterlere uyuyor ve SEKİZGEN tarafından kullanılmaya uygun görülüyor ise, tarafınıza 200TL ödeme yapılacaktır. Bunun yanı sıra tüm ödevi değerlendirme kriterlerine uygun gönderenler arasından bir kişiye SEKİZGEN firmasında tam zamanlı çalışmak üzere bir teklif yapılacaktır.
-
