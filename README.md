@@ -1,4 +1,5 @@
 testtesttest
+
 MAGENTO Tema Geliştirme Eğitim Paketi ve Ödevi
 
 Bu dokümanda SEKİZGEN için bir tema geliştirmek ve bu temayı geliştirirken MAGENTO yapısını öğrenmek için gereken adımlara ve dokümanlara ulaşabilirsiniz. Gerekli eğitim tamamlandıktan sonra SEKİZGEN adına bir tema yapmak için gereken bilgileri de yine bu dokümanın sonunda bulabileceksiniz. 
