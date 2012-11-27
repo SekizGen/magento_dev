@@ -28,7 +28,7 @@
 
 body          { background:#f2f2f2 url(../images/bg.gif) 0 0 repeat; font:11px/1.55 arial, helvetica, sans-serif; color:#444; text-align:center; }
 
-img           { border:0; vertical-align:top; }
+img           { border:0; vertical-align:top }
 
 a             { color:#4f8100; text-decoration:none; }
 a:hover       { text-decoration:underline; }
@@ -483,7 +483,7 @@ tr.summary-details-excluded { font-style:italic; }
 
 .header .top-promo { float:left; width:117px; height:30px; margin:12px 10px 0; background:url(../images/bkg_top-promo.gif) 0 0 no-repeat; text-indent:-999em; overflow:hidden; }
 
-.quick-access { background:#444; color:#fff; padding:7px 13px; text-align:right; }
+.quick-access { background:#444; color:#fff; padding:7px 13px; text-align:left; }
 .quick-access .welcome-msg { display:inline; margin:0; color:#fff; }
 .quick-access .welcome-msg a { color:#ddd; }
 .quick-access .form-language { float:left; }
