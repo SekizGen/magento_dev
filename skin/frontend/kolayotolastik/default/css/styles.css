@@ -1675,8 +1675,8 @@ tr.summary-details-excluded { font-style:italic; }
 .footer .form-subscribe button.button { float:left; }
 .footer .form-subscribe label { padding-top:2px; font-weight:bold; color:#555; }
 .footer .form-subscribe .input-box { width:186px; margin:0 5px; }
-.footer .form-subscribe input.input-text { width:180px; }
-.footer .form-subscribe button.button span { height:39px; background-position:-1px 0; width:49px; background-image:url(../images/subscribebtn.png); line-height:20px; }
+.footer .form-subscribe input.input-text { background-image:url(../images/subscribebg.png); background-repeat:no-repeat no-repeat; border:0; padding:12px 4px; width:175px;}
+.footer .form-subscribe button.button span { height:39px; background-position:-8px 0; width:49px; background-image:url(../images/subscribebtn.png); line-height:20px; }
 
 .footer .footer-callout { display:block; margin:-10px 0 10px; position:relative; }
 .footer .store-switcher { color:#555; text-align:right; }
