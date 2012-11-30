@@ -475,17 +475,16 @@ tr.summary-details-excluded { font-style:italic; }
 
 /* Header ================================================================================ */
 .logo { float:left; }
-.header-container {margin:0 auto; width:1019px;}
+.header-container {}
 
-
-.header { margin:0 0 12px;}
+.header { margin:0 0 12px; }
 .header .logo { float:left; text-decoration:none !important; }
 .header .logo strong { position:absolute; top:-999em; left:-999em; width:0; height:0; font-size:0; line-height:0; text-indent:-999em; overflow:hidden; }
 
 .header .top-promo { float:right; width:117px; height:30px; margin:12px 10px 0; background:url(../images/bkg_top-promo.gif) 0 0 no-repeat; text-indent:-999em; overflow:hidden; }
-.sahin { position:relative; left: 290px; top: 10px; }
+
 .quick-access { background:#444; color:#fff; padding:7px 13px; text-align:left; }
-.quick-access .welcome-msg { float:right; left:250px; top:125; margin:0; color:#fff; }
+.quick-access .welcome-msg { display:inline; margin:0; color:#fff; }
 .quick-access .welcome-msg a { color:#ddd; }
 .quick-access .form-language { float:left; }
 .quick-access .form-language label { font-weight:bold; padding-right:5px; color:#fff; vertical-align:middle; }
@@ -499,14 +498,13 @@ tr.summary-details-excluded { font-style:italic; }
 .quick-access .links a { padding:0 7px 0 0; background:url(../images/bkg_pipe1.gif) no-repeat 100% 50%; }
 .quick-access .links li.last a { padding:0; background:none; }
 
-.top-bar {  padding:3px 12px 2px 12px; border:3px solid #bbb; border-bottom-color:#3abbce; background:#FFF; line-height:21px; }
+.top-bar { padding:3px 12px 2px 12px; border:1px solid #bbb; border-bottom-color:#dedede; background:#efefef; line-height:21px; }
 .top-bar .breadcrumbs { float:left; width:580px; overflow:hidden; }
 .form-search { float:right; }
 .form-search label { float:left; font-size:12px; font-weight:bold; padding:0 5px 0 0; }
-.form-search input.input-text { border: #fff; solid: 1px; background-image:url(../images/aramabg.png); float:left; height:29px; width:212px; margin-right:5px; }
+.form-search input.input-text { border: #fff; solid: 1px; background: rgba(64,64,64,0.5); float:left; width:212px; margin-right:5px; }
 .form-search button.button { float:left; }
-.form-search button.button span { background-position:0 0; background-repeat:no-repeat no-repeat;height:32px;
-  width:36px; background-image:url(../images/aramabtn.png);  }
+.form-search button.button span { height:23px; background-image:url(../images/bkg_btn-small.png); line-height:21px; }
 .form-search .search-autocomplete { z-index:999; }
 .form-search .search-autocomplete ul { border:1px solid #999; background-color:#f9f5f0; }
 .form-search .search-autocomplete li { text-align:left; border-bottom:1px solid #f4eee7; padding:2px 8px 1px 8px; cursor:pointer; }
@@ -517,8 +515,8 @@ tr.summary-details-excluded { font-style:italic; }
 .header-container .top-container { padding:5px 12px; background:#fff; border:1px solid #bbb; border-width:0 1px 1px; text-align:right; }
 
 /********** < Navigation */
-.nav-container {background-image:url(../images/navbg.png);}
-#nav { height:50px;width:950px;background-image:url(../images/navbg.png); background-position:0 0; background-repeat:repeat no-repeat; margin:0 10px;float:left; margin:15px 0 0 15px; font-size:12px; }
+.nav-container {}
+#nav { float:left; margin:15px 0 0 15px; font-size:12px; }
 
 /* All Levels */ /* Style consistent throughout all nav levels */
 #nav li { position:relative;text-transform:uppercase; text-align:left;	}
@@ -1676,7 +1674,7 @@ tr.summary-details-excluded { font-style:italic; }
 .footer .form-subscribe label { padding-top:2px; font-weight:bold; color:#555; }
 .footer .form-subscribe .input-box { width:186px; margin:0 5px; }
 .footer .form-subscribe input.input-text { width:180px; }
-.footer .form-subscribe button.button span { height:39px; background-position:-1px 0; width:49px; background-image:url(../images/subscribebtn.png); line-height:20px; }
+.footer .form-subscribe button.button span { height:23px; background-image:url(../images/bkg_btn-small.png); line-height:20px; }
 
 .footer .footer-callout { display:block; margin:-10px 0 10px; position:relative; }
 .footer .store-switcher { color:#555; text-align:right; }

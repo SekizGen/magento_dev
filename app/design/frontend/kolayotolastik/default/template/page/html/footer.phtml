@@ -26,6 +26,7 @@
 ?>
 <div class="footer-container">
     <div class="footer">
+    <?php echo $this->getChildHtml('newsletter') ?>
 	    <?php echo $this->getChildHtml('clickdesk.status') ?>
         <?php echo $this->getChildHtml('bottomContainer') ?>
         <div class="f-right">
@@ -36,7 +37,7 @@
             <?php echo $this->getChildHtml('cms_footer_links') ?>
             <br/>
             <?php echo $this->getChildHtml('footer_links') ?>
-            <?php echo $this->getChildHtml('newsletter') ?>
+            
             <address><?php echo $this->getCopyright() ?></address>
         </div>
     </div>
