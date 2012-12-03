@@ -1,0 +1,95 @@
+2012-11-27T07:23:35+00:00 CRIT (2): Not valid template file:frontend\base\default\template\search/search.phtml
+2012-11-27T07:23:37+00:00 CRIT (2): Not valid template file:frontend\base\default\template\carousel/carousel.phtml
+2012-11-27T07:23:37+00:00 CRIT (2): Not valid template file:frontend\base\default\template\carousel/carousel.phtml
+2012-11-27T07:25:02+00:00 CRIT (2): Not valid template file:frontend\base\default\template\search/search.phtml
+2012-11-27T07:25:02+00:00 CRIT (2): Not valid template file:frontend\base\default\template\carousel/carousel.phtml
+2012-11-27T07:25:02+00:00 CRIT (2): Not valid template file:frontend\base\default\template\carousel/carousel.phtml
+2012-11-27T07:28:59+00:00 CRIT (2): Not valid template file:frontend\base\default\template\search/search.phtml
+2012-11-27T07:29:00+00:00 CRIT (2): Not valid template file:frontend\base\default\template\carousel/carousel.phtml
+2012-11-27T07:29:00+00:00 CRIT (2): Not valid template file:frontend\base\default\template\carousel/carousel.phtml
+2012-11-27T07:32:56+00:00 ERR (3): Warning: Division by zero  in C:\xampp\htdocs\magento_dev\app\design\frontend\kolayotolastik\default\template\catalog\product\view\kolayoto_price.phtml on line 6
+2012-11-27T08:01:57+00:00 CRIT (2): Not valid template file:frontend\base\default\template\search/search.phtml
+2012-11-27T08:01:57+00:00 CRIT (2): Not valid template file:frontend\base\default\template\carousel/carousel.phtml
+2012-11-27T08:01:57+00:00 CRIT (2): Not valid template file:frontend\base\default\template\carousel/carousel.phtml
+2012-11-27T09:39:23+00:00 ERR (3): Warning: Division by zero  in C:\xampp\htdocs\magento_dev\app\design\frontend\kolayotolastik\default\template\catalog\product\view\kolayoto_price.phtml on line 6
+2012-11-27T12:17:41+00:00 ERR (3): Warning: array_key_exists() expects parameter 2 to be array, null given  in C:\xampp\htdocs\magento_dev\app\code\core\Mage\Captcha\Model\Observer.php on line 166
+2012-11-27T12:23:56+00:00 ERR (3): Warning: Division by zero  in C:\xampp\htdocs\magento_dev\app\design\frontend\kolayotolastik\default\template\catalog\product\view\kolayoto_price.phtml on line 6
+2012-11-27T13:43:16+00:00 ERR (3): Warning: Division by zero  in C:\xampp\htdocs\magento_dev\app\design\frontend\kolayotolastik\default\template\catalog\product\view\kolayoto_price.phtml on line 6
+2012-11-27T13:46:41+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 124: parser error : Opening and ending tag mismatch: block line 35 and default  in C:\xampp\htdocs\magento_dev\app\code\core\Mage\Core\Model\Layout\Update.php on line 444
+2012-11-27T13:46:41+00:00 ERR (3): Warning: simplexml_load_string():     &lt;/default&gt;  in C:\xampp\htdocs\magento_dev\app\code\core\Mage\Core\Model\Layout\Update.php on line 444
+2012-11-27T13:46:41+00:00 ERR (3): Warning: simplexml_load_string():               ^  in C:\xampp\htdocs\magento_dev\app\code\core\Mage\Core\Model\Layout\Update.php on line 444
+2012-11-27T13:46:41+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 205: parser error : Opening and ending tag mismatch: default line 33 and layout  in C:\xampp\htdocs\magento_dev\app\code\core\Mage\Core\Model\Layout\Update.php on line 444
+2012-11-27T13:46:41+00:00 ERR (3): Warning: simplexml_load_string(): &lt;/layout&gt;  in C:\xampp\htdocs\magento_dev\app\code\core\Mage\Core\Model\Layout\Update.php on line 444
+2012-11-27T13:46:41+00:00 ERR (3): Warning: simplexml_load_string():          ^  in C:\xampp\htdocs\magento_dev\app\code\core\Mage\Core\Model\Layout\Update.php on line 444
+2012-11-27T13:46:41+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 206: parser error : Premature end of data in tag layout line 28  in C:\xampp\htdocs\magento_dev\app\code\core\Mage\Core\Model\Layout\Update.php on line 444
+2012-11-27T13:46:41+00:00 ERR (3): Warning: simplexml_load_string():   in C:\xampp\htdocs\magento_dev\app\code\core\Mage\Core\Model\Layout\Update.php on line 444
+2012-11-27T13:46:41+00:00 ERR (3): Warning: simplexml_load_string(): ^  in C:\xampp\htdocs\magento_dev\app\code\core\Mage\Core\Model\Layout\Update.php on line 444
+2012-11-27T13:46:45+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 124: parser error : Opening and ending tag mismatch: block line 35 and default  in C:\xampp\htdocs\magento_dev\app\code\core\Mage\Core\Model\Layout\Update.php on line 444
+2012-11-27T13:46:45+00:00 ERR (3): Warning: simplexml_load_string():     &lt;/default&gt;  in C:\xampp\htdocs\magento_dev\app\code\core\Mage\Core\Model\Layout\Update.php on line 444
+2012-11-27T13:46:45+00:00 ERR (3): Warning: simplexml_load_string():               ^  in C:\xampp\htdocs\magento_dev\app\code\core\Mage\Core\Model\Layout\Update.php on line 444
+2012-11-27T13:46:45+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 205: parser error : Opening and ending tag mismatch: default line 33 and layout  in C:\xampp\htdocs\magento_dev\app\code\core\Mage\Core\Model\Layout\Update.php on line 444
+2012-11-27T13:46:45+00:00 ERR (3): Warning: simplexml_load_string(): &lt;/layout&gt;  in C:\xampp\htdocs\magento_dev\app\code\core\Mage\Core\Model\Layout\Update.php on line 444
+2012-11-27T13:46:45+00:00 ERR (3): Warning: simplexml_load_string():          ^  in C:\xampp\htdocs\magento_dev\app\code\core\Mage\Core\Model\Layout\Update.php on line 444
+2012-11-27T13:46:45+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 206: parser error : Premature end of data in tag layout line 28  in C:\xampp\htdocs\magento_dev\app\code\core\Mage\Core\Model\Layout\Update.php on line 444
+2012-11-27T13:46:45+00:00 ERR (3): Warning: simplexml_load_string():   in C:\xampp\htdocs\magento_dev\app\code\core\Mage\Core\Model\Layout\Update.php on line 444
+2012-11-27T13:46:45+00:00 ERR (3): Warning: simplexml_load_string(): ^  in C:\xampp\htdocs\magento_dev\app\code\core\Mage\Core\Model\Layout\Update.php on line 444
+2012-11-28T10:48:41+00:00 CRIT (2): Not valid template file:frontend\base\default\template\search/search.phtml
+2012-11-28T10:48:41+00:00 CRIT (2): Not valid template file:frontend\base\default\template\carousel/carousel.phtml
+2012-11-28T10:48:41+00:00 CRIT (2): Not valid template file:frontend\base\default\template\carousel/carousel.phtml
+2012-11-28T10:50:12+00:00 CRIT (2): Not valid template file:frontend\base\default\template\search/search.phtml
+2012-11-28T10:50:12+00:00 CRIT (2): Not valid template file:frontend\base\default\template\carousel/carousel.phtml
+2012-11-28T10:50:12+00:00 CRIT (2): Not valid template file:frontend\base\default\template\carousel/carousel.phtml
+2012-11-28T10:50:38+00:00 CRIT (2): Not valid template file:frontend\base\default\template\search/search.phtml
+2012-11-28T10:50:38+00:00 CRIT (2): Not valid template file:frontend\base\default\template\carousel/carousel.phtml
+2012-11-28T10:50:38+00:00 CRIT (2): Not valid template file:frontend\base\default\template\carousel/carousel.phtml
+2012-11-30T06:59:09+00:00 DEBUG (7): HEADERS ALREADY SENT: <pre>[0] C:\xampp\htdocs\magento_dev\app\code\core\Mage\Core\Controller\Response\Http.php:52
+[1] C:\xampp\htdocs\magento_dev\lib\Zend\Controller\Response\Abstract.php:766
+[2] C:\xampp\htdocs\magento_dev\app\code\core\Mage\Core\Controller\Response\Http.php:83
+[3] C:\xampp\htdocs\magento_dev\app\code\core\Mage\Core\Controller\Varien\Front.php:188
+[4] C:\xampp\htdocs\magento_dev\app\code\core\Mage\Core\Model\App.php:354
+[5] C:\xampp\htdocs\magento_dev\app\Mage.php:683
+[6] C:\xampp\htdocs\magento_dev\index.php:87
+</pre>
+2012-11-30T06:59:21+00:00 DEBUG (7): HEADERS ALREADY SENT: <pre>[0] C:\xampp\htdocs\magento_dev\app\code\core\Mage\Core\Controller\Response\Http.php:52
+[1] C:\xampp\htdocs\magento_dev\lib\Zend\Controller\Response\Abstract.php:766
+[2] C:\xampp\htdocs\magento_dev\app\code\core\Mage\Core\Controller\Response\Http.php:83
+[3] C:\xampp\htdocs\magento_dev\app\code\core\Mage\Core\Controller\Varien\Front.php:188
+[4] C:\xampp\htdocs\magento_dev\app\code\core\Mage\Core\Model\App.php:354
+[5] C:\xampp\htdocs\magento_dev\app\Mage.php:683
+[6] C:\xampp\htdocs\magento_dev\index.php:87
+</pre>
+2012-11-30T06:59:22+00:00 CRIT (2): Not valid template file:frontend\base\default\template\search/search.phtml
+2012-11-30T06:59:22+00:00 CRIT (2): Not valid template file:frontend\base\default\template\carousel/carousel.phtml
+2012-11-30T06:59:22+00:00 CRIT (2): Not valid template file:frontend\base\default\template\carousel/carousel.phtml
+2012-11-30T12:31:43+00:00 ERR (3): Notice: Use of undefined constant images - assumed 'images'  in C:\xampp\htdocs\magento_dev\app\design\frontend\kolayotolastik\default\template\newsletter\subscribe.phtml on line 35
+2012-11-30T12:31:45+00:00 ERR (3): Notice: Use of undefined constant images - assumed 'images'  in C:\xampp\htdocs\magento_dev\app\design\frontend\kolayotolastik\default\template\newsletter\subscribe.phtml on line 35
+2012-11-30T12:31:46+00:00 ERR (3): Notice: Use of undefined constant images - assumed 'images'  in C:\xampp\htdocs\magento_dev\app\design\frontend\kolayotolastik\default\template\newsletter\subscribe.phtml on line 35
+2012-11-30T12:31:47+00:00 ERR (3): Notice: Use of undefined constant images - assumed 'images'  in C:\xampp\htdocs\magento_dev\app\design\frontend\kolayotolastik\default\template\newsletter\subscribe.phtml on line 35
+2012-11-30T12:32:15+00:00 ERR (3): Notice: Use of undefined constant images - assumed 'images'  in C:\xampp\htdocs\magento_dev\app\design\frontend\kolayotolastik\default\template\newsletter\subscribe.phtml on line 35
+2012-11-30T12:32:17+00:00 ERR (3): Notice: Use of undefined constant images - assumed 'images'  in C:\xampp\htdocs\magento_dev\app\design\frontend\kolayotolastik\default\template\newsletter\subscribe.phtml on line 35
+2012-11-30T12:32:18+00:00 ERR (3): Notice: Use of undefined constant images - assumed 'images'  in C:\xampp\htdocs\magento_dev\app\design\frontend\kolayotolastik\default\template\newsletter\subscribe.phtml on line 35
+2012-11-30T12:32:19+00:00 ERR (3): Notice: Use of undefined constant images - assumed 'images'  in C:\xampp\htdocs\magento_dev\app\design\frontend\kolayotolastik\default\template\newsletter\subscribe.phtml on line 35
+2012-11-30T12:33:19+00:00 ERR (3): Notice: Use of undefined constant images - assumed 'images'  in C:\xampp\htdocs\magento_dev\app\design\frontend\kolayotolastik\default\template\newsletter\subscribe.phtml on line 35
+2012-11-30T12:33:21+00:00 ERR (3): Notice: Use of undefined constant images - assumed 'images'  in C:\xampp\htdocs\magento_dev\app\design\frontend\kolayotolastik\default\template\newsletter\subscribe.phtml on line 35
+2012-11-30T12:33:22+00:00 ERR (3): Notice: Use of undefined constant images - assumed 'images'  in C:\xampp\htdocs\magento_dev\app\design\frontend\kolayotolastik\default\template\newsletter\subscribe.phtml on line 35
+2012-11-30T12:33:22+00:00 ERR (3): Notice: Use of undefined constant images - assumed 'images'  in C:\xampp\htdocs\magento_dev\app\design\frontend\kolayotolastik\default\template\newsletter\subscribe.phtml on line 35
+2012-11-30T12:33:33+00:00 ERR (3): Notice: Use of undefined constant images - assumed 'images'  in C:\xampp\htdocs\magento_dev\app\design\frontend\kolayotolastik\default\template\newsletter\subscribe.phtml on line 35
+2012-11-30T12:33:35+00:00 ERR (3): Notice: Use of undefined constant images - assumed 'images'  in C:\xampp\htdocs\magento_dev\app\design\frontend\kolayotolastik\default\template\newsletter\subscribe.phtml on line 35
+2012-11-30T12:33:36+00:00 ERR (3): Notice: Use of undefined constant images - assumed 'images'  in C:\xampp\htdocs\magento_dev\app\design\frontend\kolayotolastik\default\template\newsletter\subscribe.phtml on line 35
+2012-11-30T12:33:36+00:00 ERR (3): Notice: Use of undefined constant images - assumed 'images'  in C:\xampp\htdocs\magento_dev\app\design\frontend\kolayotolastik\default\template\newsletter\subscribe.phtml on line 35
+2012-11-30T12:34:02+00:00 ERR (3): Notice: Use of undefined constant images - assumed 'images'  in C:\xampp\htdocs\magento_dev\app\design\frontend\kolayotolastik\default\template\newsletter\subscribe.phtml on line 35
+2012-11-30T12:34:04+00:00 ERR (3): Notice: Use of undefined constant images - assumed 'images'  in C:\xampp\htdocs\magento_dev\app\design\frontend\kolayotolastik\default\template\newsletter\subscribe.phtml on line 35
+2012-11-30T12:34:05+00:00 ERR (3): Notice: Use of undefined constant images - assumed 'images'  in C:\xampp\htdocs\magento_dev\app\design\frontend\kolayotolastik\default\template\newsletter\subscribe.phtml on line 35
+2012-11-30T12:34:06+00:00 ERR (3): Notice: Use of undefined constant images - assumed 'images'  in C:\xampp\htdocs\magento_dev\app\design\frontend\kolayotolastik\default\template\newsletter\subscribe.phtml on line 35
+2012-11-30T12:34:13+00:00 ERR (3): Notice: Use of undefined constant images - assumed 'images'  in C:\xampp\htdocs\magento_dev\app\design\frontend\kolayotolastik\default\template\newsletter\subscribe.phtml on line 35
+2012-11-30T12:34:16+00:00 ERR (3): Notice: Use of undefined constant images - assumed 'images'  in C:\xampp\htdocs\magento_dev\app\design\frontend\kolayotolastik\default\template\newsletter\subscribe.phtml on line 35
+2012-11-30T12:34:17+00:00 ERR (3): Notice: Use of undefined constant images - assumed 'images'  in C:\xampp\htdocs\magento_dev\app\design\frontend\kolayotolastik\default\template\newsletter\subscribe.phtml on line 35
+2012-11-30T12:34:17+00:00 ERR (3): Notice: Use of undefined constant images - assumed 'images'  in C:\xampp\htdocs\magento_dev\app\design\frontend\kolayotolastik\default\template\newsletter\subscribe.phtml on line 35
+2012-12-03T11:49:26+00:00 DEBUG (7): HEADERS ALREADY SENT: <pre>[0] C:\xampp\htdocs\magento_dev\app\code\core\Mage\Core\Controller\Response\Http.php:52
+[1] C:\xampp\htdocs\magento_dev\lib\Zend\Controller\Response\Abstract.php:766
+[2] C:\xampp\htdocs\magento_dev\app\code\core\Mage\Core\Controller\Response\Http.php:83
+[3] C:\xampp\htdocs\magento_dev\app\code\core\Mage\Core\Controller\Varien\Front.php:188
+[4] C:\xampp\htdocs\magento_dev\app\code\core\Mage\Core\Model\App.php:354
+[5] C:\xampp\htdocs\magento_dev\app\Mage.php:683
+[6] C:\xampp\htdocs\magento_dev\index.php:87
+</pre>
